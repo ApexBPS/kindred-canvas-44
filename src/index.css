@@ -171,6 +171,42 @@
     50%  { box-shadow: 0 0 0 14px hsl(var(--accent) / 0); background: hsl(var(--accent) / 0.45); }
     100% { box-shadow: 0 0 0 0 hsl(var(--accent) / 0); background: hsl(var(--accent) / 0.0); }
   }
+
+  /* Card shine — when a header link scrolls to a card */
+  .card-shine {
+    position: relative;
+    animation: card-shine-pulse 2.1s cubic-bezier(0.32,0.72,0,1) 1;
+  }
+  .card-shine::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    pointer-events: none;
+    background: linear-gradient(
+      120deg,
+      transparent 0%,
+      hsl(42 90% 88% / 0) 35%,
+      hsl(42 90% 88% / 0.55) 50%,
+      hsl(42 90% 88% / 0) 65%,
+      transparent 100%
+    );
+    background-size: 250% 100%;
+    background-position: 200% 0;
+    mix-blend-mode: screen;
+    animation: card-shine-sweep 2.1s cubic-bezier(0.32,0.72,0,1) 1;
+  }
+  @keyframes card-shine-pulse {
+    0%   { box-shadow: 0 0 0 0 hsl(var(--accent) / 0.0), 0 0 0 0 hsl(var(--accent) / 0.0); transform: translateY(0); }
+    20%  { box-shadow: 0 0 0 4px hsl(var(--accent) / 0.45), 0 0 60px 0 hsl(var(--accent) / 0.55); transform: translateY(-4px); }
+    60%  { box-shadow: 0 0 0 2px hsl(var(--accent) / 0.25), 0 0 80px 4px hsl(var(--accent) / 0.35); transform: translateY(-2px); }
+    100% { box-shadow: 0 0 0 0 hsl(var(--accent) / 0); transform: translateY(0); }
+  }
+  @keyframes card-shine-sweep {
+    0%   { background-position: 200% 0; opacity: 0; }
+    15%  { opacity: 1; }
+    100% { background-position: -120% 0; opacity: 0; }
+  }
 }
 
 @layer utilities {

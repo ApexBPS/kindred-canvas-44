@@ -1,21 +1,34 @@
-import { NavLink, Link } from "react-router-dom";
+import { NavLink, Link, useLocation, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { Menu, X } from "lucide-react";
 import logo from "@/assets/apex-logo.png";
 
-const links = [
-  { to: "/", label: "Home" },
-  { to: "/about", label: "About" },
-  { to: "/roles", label: "Roles" },
-  { to: "/procedure", label: "Procedure" },
-  { to: "/team", label: "Team" },
-  { to: "/collaborations", label: "Collabs" },
-  { to: "/categories", label: "Categories" },
+export const navLinks = [
+  { to: "/", label: "Home", cardId: null as string | null },
+  { to: "/about", label: "About", cardId: "card-about" },
+  { to: "/roles", label: "Roles & Application", cardId: "card-roles" },
+  { to: "/procedure", label: "Procedure", cardId: "card-procedure" },
+  { to: "/team", label: "Our Team", cardId: "card-team" },
+  { to: "/collaborations", label: "Collaborations", cardId: "card-collaborations" },
+  { to: "/categories", label: "Categories", cardId: "card-categories" },
 ];
+
+const shineCard = (id: string) => {
+  const el = document.getElementById(id);
+  if (!el) return;
+  el.scrollIntoView({ behavior: "smooth", block: "center" });
+  el.classList.remove("card-shine");
+  // restart animation
+  void el.offsetWidth;
+  el.classList.add("card-shine");
+  window.setTimeout(() => el.classList.remove("card-shine"), 2200);
+};
 
 export const Navbar = () => {
   const [open, setOpen] = useState(false);
   const [hidden, setHidden] = useState(false);
+  const location = useLocation();
+  const navigate = useNavigate();
 
   useEffect(() => {
     let lastY = window.scrollY;
@@ -30,9 +43,22 @@ export const Navbar = () => {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
+  const handleClick = (e: React.MouseEvent, link: typeof navLinks[number]) => {
+    setOpen(false);
+    if (!link.cardId) return; // Home — let it navigate normally
+    e.preventDefault();
+    if (location.pathname !== "/") {
+      navigate("/");
+      // wait for Home to mount
+      window.setTimeout(() => shineCard(link.cardId!), 250);
+    } else {
+      shineCard(link.cardId);
+    }
+  };
+
   return (
     <header
-      className="fixed top-4 left-1/2 z-50 w-[calc(100%-2rem)] max-w-5xl animate-fade-in"
+      className="fixed top-4 left-1/2 z-50 w-[calc(100%-2rem)] max-w-6xl animate-fade-in"
       style={{
         transform: hidden ? "translate(-50%, -160%)" : "translate(-50%, 0)",
         opacity: hidden ? 0 : 1,
@@ -49,12 +75,12 @@ export const Navbar = () => {
           </span>
         </Link>
         <ul className="hidden xl:flex items-center gap-0.5 min-w-0">
-          {links.map((l) => (
+          {navLinks.map((l) => (
             <li key={l.to}>
               <NavLink
                 to={l.to}
                 end={l.to === "/"}
-                id={l.to === "/roles" ? "nav-roles" : undefined}
+                onClick={(e) => handleClick(e, l)}
                 className={({ isActive }) =>
                   `px-3 py-2 rounded-full text-sm whitespace-nowrap transition-smooth ${
                     isActive
@@ -79,12 +105,12 @@ export const Navbar = () => {
       {open && (
         <div className="xl:hidden mt-2 glass rounded-3xl p-3 animate-scale-in">
           <ul className="flex flex-col gap-1">
-            {links.map((l) => (
+            {navLinks.map((l) => (
               <li key={l.to}>
                 <NavLink
                   to={l.to}
                   end={l.to === "/"}
-                  onClick={() => setOpen(false)}
+                  onClick={(e) => handleClick(e, l)}
                   className={({ isActive }) =>
                     `block px-4 py-3 rounded-2xl text-sm transition-smooth ${
                       isActive
