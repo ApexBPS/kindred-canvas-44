@@ -1,34 +1,97 @@
-import { PageShell } from "@/components/layout/PageShell";
+import { useRef } from "react";
+import { ArrowDown } from "lucide-react";
+import { Navbar } from "@/components/layout/Navbar";
+import { Footer } from "@/components/layout/Footer";
 
-const team = [
-  { name: "Iris Vale", role: "Director", initials: "IV", grad: "from-[hsl(var(--sky))] to-[hsl(var(--slate))]" },
-  { name: "Mateo Ruiz", role: "Head of Design", initials: "MR", grad: "from-[hsl(var(--sand))] to-[hsl(var(--cocoa))]" },
-  { name: "Anya Okafor", role: "Head of Engineering", initials: "AO", grad: "from-[hsl(var(--cream))] to-[hsl(var(--sand))]" },
-  { name: "Linus Park", role: "Research Lead", initials: "LP", grad: "from-[hsl(var(--sky))] to-[hsl(var(--cream))]" },
-  { name: "Saoirse Lin", role: "Communications", initials: "SL", grad: "from-[hsl(var(--cocoa))] to-[hsl(var(--navy))]" },
-  { name: "Jules Hart", role: "Operations", initials: "JH", grad: "from-[hsl(var(--slate))] to-[hsl(var(--sky))]" },
-  { name: "Noor Ahmadi", role: "Partnerships", initials: "NA", grad: "from-[hsl(var(--sand))] to-[hsl(var(--cream))]" },
-  { name: "Theo Bjornsen", role: "Product", initials: "TB", grad: "from-[hsl(var(--cream))] to-[hsl(var(--sky))]" },
+const members: { name: string; role: string }[] = [
+  { name: "Layal Abounaem", role: "Director-General" },
+  { name: "Ziad Tarek Hindi", role: "Deputy Director" },
+  { name: "Ahmed Idris", role: "Deputy Director" },
+  { name: "Joe ElFeghaly", role: "Chief of Staff" },
+  { name: "Karim Noamany", role: "Operations Director" },
+  { name: "Lamar Nawar", role: "Events Director" },
+  { name: "Ghala Alghamdi", role: "Design Director" },
+  { name: "Anya Asim", role: "Social Affairs Director" },
+  { name: "Ibrahim Mansour", role: "Operations Member" },
+  { name: "Ahmed Elamir", role: "Operations Member" },
+  { name: "Karim Hisham", role: "Operations Member" },
+  { name: "Mohamed El Safadi", role: "Events Member" },
+  { name: "Sadeen Abdulaziz", role: "Events Member" },
+  { name: "Sally Elmasry", role: "Events Member" },
+  { name: "Bateel Mashabi", role: "Design Member" },
+  { name: "Lamar Albtaddini", role: "Design Member" },
+  { name: "Mohammad Al Fadil", role: "Social Affairs Member" },
+  { name: "Lujain Hijazi", role: "Social Affairs Member" },
+  { name: "Zayd Sham", role: "Social Affairs Member" },
 ];
 
-const Team = () => (
-  <PageShell kicker="People" title="Our Team">
-    <p className="max-w-2xl mx-auto text-center text-muted-foreground -mt-8 mb-20">
-      The crew turning ideas into outcomes. Different lenses, shared standards.
-    </p>
+const Team = () => {
+  const membersRef = useRef<HTMLDivElement>(null);
+  return (
+    <div className="min-h-dvh">
+      <Navbar />
+      <main className="pt-32 px-6">
+        {/* Section 1 */}
+        <section className="max-w-4xl mx-auto text-center animate-fade-in">
+          <h1
+            className="font-playfair text-gradient leading-[1.05]"
+            style={{ fontSize: "clamp(2.8rem, 7vw, 6rem)" }}
+          >
+            The Directorate
+          </h1>
+          <p className="font-garamond text-base md:text-lg text-foreground/85 leading-relaxed mt-8 max-w-3xl mx-auto">
+            Apex members are dedicated to creating an event that goes beyond expectations. Every team
+            member works with commitment, creativity, and attention to detail to ensure each part of the
+            experience runs smoothly, from planning and coordination to execution on event day. Their goal
+            is not just to host an event, but to build an unforgettable platform where innovation,
+            collaboration, and opportunity come together at the highest level.
+          </p>
+          <button
+            onClick={() => membersRef.current?.scrollIntoView({ behavior: "smooth" })}
+            aria-label="See members"
+            className="mx-auto mt-12 w-14 h-14 rounded-full glass-strong flex items-center justify-center hover:bg-white/15 transition-smooth animate-float"
+          >
+            <ArrowDown size={20} />
+          </button>
+        </section>
 
-    <div className="max-w-6xl mx-auto grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5">
-      {team.map((m, i) => (
-        <div key={m.name} className="glass rounded-3xl p-6 text-center transition-smooth hover:bg-white/10 hover:-translate-y-1 animate-fade-in" style={{ animationDelay: `${i * 0.05}s` }}>
-          <div className={`mx-auto w-24 h-24 rounded-full bg-gradient-to-br ${m.grad} flex items-center justify-center font-serif text-3xl text-primary-foreground shadow-glow mb-5`}>
-            {m.initials}
+        {/* Section 2 */}
+        <section ref={membersRef} className="mt-32">
+          <div className="max-w-5xl mx-auto text-center mb-14">
+            <h2
+              className="font-playfair text-gradient leading-[1.05]"
+              style={{ fontSize: "clamp(2.2rem, 5vw, 4rem)" }}
+            >
+              Our Leadership Team
+            </h2>
+            <p className="font-garamond text-base md:text-lg text-foreground/85 mt-5 max-w-2xl mx-auto">
+              The minds behind Apex BPS, dedicated to transform ideas into reality.
+            </p>
           </div>
-          <h3 className="font-serif text-xl">{m.name}</h3>
-          <p className="text-sm text-muted-foreground mt-1">{m.role}</p>
-        </div>
-      ))}
+
+          <div className="max-w-6xl mx-auto grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+            {members.map((m, i) => (
+              <div
+                key={m.name}
+                className="text-center animate-fade-in"
+                style={{ animationDelay: `${i * 0.04}s` }}
+              >
+                <div className="font-garamond uppercase tracking-[0.06em] text-xl md:text-2xl text-foreground leading-tight">
+                  {m.name}
+                </div>
+                <div className="font-garamond italic text-sm text-foreground/75 mt-1">
+                  {m.role}
+                </div>
+                {/* iOS-core translucent gradient under each member */}
+                <div className="ios-reveal rounded-full h-3 mt-4 mx-6" />
+              </div>
+            ))}
+          </div>
+        </section>
+      </main>
+      <Footer />
     </div>
-  </PageShell>
-);
+  );
+};
 
 export default Team;

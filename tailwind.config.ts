@@ -64,8 +64,11 @@ export default {
         sm: "calc(var(--radius) - 4px)",
       },
       fontFamily: {
-        serif: ['"Instrument Serif"', 'serif'],
-        sans: ['Inter', 'system-ui', 'sans-serif'],
+        serif: ['"EB Garamond"', 'serif'],
+        sans: ['"EB Garamond"', 'serif'],
+        garamond: ['"EB Garamond"', 'serif'],
+        playfair: ['"Playfair Display"', 'serif'],
+        crave: ['"Italianno"', 'cursive'],
       },
       backgroundImage: {
         'gradient-aurora': 'var(--gradient-aurora)',
