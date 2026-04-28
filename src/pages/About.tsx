@@ -1,9 +1,11 @@
 import { Navbar } from "@/components/layout/Navbar";
+import { BackButton } from "@/components/layout/BackButton";
 import { Footer } from "@/components/layout/Footer";
 
 const About = () => (
   <div className="min-h-dvh">
     <Navbar />
+      <BackButton />
     <main className="pt-32 px-6">
       {/* Section 1 */}
       <section className="max-w-4xl mx-auto animate-fade-in">

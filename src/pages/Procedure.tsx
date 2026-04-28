@@ -1,6 +1,7 @@
 import { useRef } from "react";
 import { ArrowDown } from "lucide-react";
 import { Navbar } from "@/components/layout/Navbar";
+import { BackButton } from "@/components/layout/BackButton";
 import { Footer } from "@/components/layout/Footer";
 
 const preEvent = [
@@ -70,6 +71,7 @@ const Procedure = () => {
   return (
     <div className="min-h-dvh">
       <Navbar />
+      <BackButton />
       <main className="pt-32 px-6">
         {/* Section 1 - left aligned */}
         <section className="max-w-5xl mx-auto animate-fade-in">
