@@ -1,6 +1,7 @@
 import { ReactNode } from "react";
 import { Navbar } from "./Navbar";
 import { Footer } from "./Footer";
+import { BackButton } from "./BackButton";
 
 export const PageShell = ({
   children,
@@ -21,6 +22,7 @@ export const PageShell = ({
   return (
     <div className="min-h-dvh">
       <Navbar />
+      <BackButton />
       <main className="pt-32 px-6">
         <section className={`max-w-6xl mx-auto mb-16 animate-fade-in ${alignCls}`}>
           {kicker && (
