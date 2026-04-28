@@ -216,4 +216,8 @@
   .font-garamond { font-family: 'EB Garamond', serif; }
   .font-playfair { font-family: 'Playfair Display', serif; }
   .font-crave { font-family: 'Italianno', cursive; letter-spacing: 0.01em; }
+
+  /* Hide scrollbar in the navbar's horizontally-scrolling link list */
+  .nav-scroll::-webkit-scrollbar { display: none; }
+  .nav-scroll { -ms-overflow-style: none; scrollbar-width: none; }
 }
