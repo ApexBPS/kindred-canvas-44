@@ -62,7 +62,7 @@ const Roles = () => (
           Applications
         </h2>
         <div className="gradient-line my-8 max-w-md mx-auto" />
-        <p className="font-crave text-foreground/95" style={{ fontSize: "clamp(2.5rem, 6vw, 4.5rem)" }}>
+        <p className="font-playfair text-foreground/95" style={{ fontSize: "clamp(2.5rem, 6vw, 4.5rem)" }}>
           Coming Soon
         </p>
         <div className="gradient-line my-8 max-w-md mx-auto" />

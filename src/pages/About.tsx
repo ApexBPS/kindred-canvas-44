@@ -8,7 +8,7 @@ const About = () => (
       {/* Section 1 */}
       <section className="max-w-4xl mx-auto animate-fade-in">
         <h1
-          className="font-crave text-gradient leading-[0.95] text-center"
+          className="font-playfair text-gradient leading-[0.95] text-center"
           style={{ fontSize: "clamp(3.5rem, 9vw, 7rem)" }}
         >
           What is Apex BPS?
@@ -39,11 +39,11 @@ const About = () => (
 
       {/* Section 2 */}
       <section className="max-w-3xl mx-auto mt-32 mb-16 text-center animate-fade-in">
-        <h2 className="font-crave text-gradient" style={{ fontSize: "clamp(3rem, 7vw, 5.5rem)" }}>
+        <h2 className="font-playfair text-gradient" style={{ fontSize: "clamp(3rem, 7vw, 5.5rem)" }}>
           Dates &amp; Venue
         </h2>
         <div className="gradient-line my-8 max-w-md mx-auto" />
-        <p className="font-crave text-foreground/95" style={{ fontSize: "clamp(2.5rem, 6vw, 4.5rem)" }}>
+        <p className="font-playfair text-foreground/95" style={{ fontSize: "clamp(2.5rem, 6vw, 4.5rem)" }}>
           To Be Announced
         </p>
         <div className="gradient-line my-8 max-w-md mx-auto" />

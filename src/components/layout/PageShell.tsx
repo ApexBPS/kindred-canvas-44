@@ -17,7 +17,7 @@ export const PageShell = ({
 }) => {
   const alignCls = align === "left" ? "text-left" : "text-center";
   const fontCls =
-    titleFont === "crave" ? "font-crave" : titleFont === "garamond" ? "font-garamond" : "font-playfair";
+    titleFont === "crave" ? "font-playfair" : titleFont === "garamond" ? "font-garamond" : "font-playfair";
   return (
     <div className="min-h-dvh">
       <Navbar />
