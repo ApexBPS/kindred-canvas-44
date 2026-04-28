@@ -1,14 +1,16 @@
 import { Link } from "react-router-dom";
+import { Phone, Mail } from "lucide-react";
 
 export const Footer = () => (
   <footer className="relative mt-32 px-6 pb-10">
-    <div className="max-w-6xl mx-auto glass rounded-3xl p-10 grid md:grid-cols-3 gap-8">
-      <div>
+    <div className="max-w-6xl mx-auto glass rounded-3xl p-10 grid md:grid-cols-4 gap-8">
+      <div className="md:col-span-1">
         <h3 className="font-playfair text-5xl text-gradient leading-none mb-2">Apex</h3>
         <p className="text-sm text-muted-foreground max-w-xs font-garamond">
-          Business Pitch Summit — where student innovation meets industry-level insight.
+          Business Pitch Summit — where ideas meet their Apex.
         </p>
       </div>
+
       <div className="text-sm space-y-2 font-garamond">
         <p className="text-foreground/70 mb-3 uppercase tracking-widest text-xs">Explore</p>
         <Link to="/about" className="block hover:text-accent transition-smooth">About</Link>
@@ -16,10 +18,29 @@ export const Footer = () => (
         <Link to="/procedure" className="block hover:text-accent transition-smooth">Procedure</Link>
         <Link to="/team" className="block hover:text-accent transition-smooth">Our Team</Link>
       </div>
+
       <div className="text-sm space-y-2 font-garamond">
         <p className="text-foreground/70 mb-3 uppercase tracking-widest text-xs">Summit</p>
         <p className="text-muted-foreground">Dates & Venue: TBA</p>
         <p className="text-muted-foreground">Applications opening soon.</p>
+      </div>
+
+      <div className="text-sm space-y-3 font-garamond">
+        <p className="text-foreground/70 mb-3 uppercase tracking-widest text-xs">Contact</p>
+        <a
+          href="tel:+966508767377"
+          className="flex items-start gap-2 text-muted-foreground hover:text-accent transition-smooth"
+        >
+          <Phone size={14} className="mt-1 shrink-0" />
+          <span>+966 508 767 377</span>
+        </a>
+        <a
+          href="mailto:apexbusinesspitchsummit@gmail.com"
+          className="flex items-start gap-2 text-muted-foreground hover:text-accent transition-smooth break-all"
+        >
+          <Mail size={14} className="mt-1 shrink-0" />
+          <span>apexbusinesspitchsummit@gmail.com</span>
+        </a>
       </div>
     </div>
     <p className="text-center text-xs text-muted-foreground mt-6 font-garamond">
