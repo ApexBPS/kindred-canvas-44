@@ -4,6 +4,7 @@ import { Menu, X } from "lucide-react";
 
 const links = [
   { to: "/", label: "Home" },
+  { to: "/about", label: "About" },
   { to: "/roles", label: "Roles & Application" },
   { to: "/procedure", label: "Procedure" },
   { to: "/team", label: "Our Team" },
@@ -16,8 +17,8 @@ export const Navbar = () => {
   return (
     <header className="fixed top-4 left-1/2 -translate-x-1/2 z-50 w-[calc(100%-2rem)] max-w-6xl animate-fade-in">
       <nav className="glass rounded-full px-3 py-2 flex items-center justify-between gap-2">
-        <Link to="/" className="px-4 py-1.5 font-serif text-xl text-gradient">
-          Aurora
+        <Link to="/" className="px-4 py-1 font-crave text-3xl text-gradient leading-none">
+          Apex
         </Link>
         <ul className="hidden lg:flex items-center gap-1">
           {links.map((l) => (
@@ -25,11 +26,12 @@ export const Navbar = () => {
               <NavLink
                 to={l.to}
                 end={l.to === "/"}
+                id={l.to === "/roles" ? "nav-roles" : undefined}
                 className={({ isActive }) =>
-                  `px-4 py-2 rounded-full text-sm transition-smooth ${
+                  `px-4 py-2 rounded-full text-sm tracking-wide transition-smooth ${
                     isActive
                       ? "bg-primary/90 text-primary-foreground shadow-glow"
-                      : "text-foreground/80 hover:text-foreground hover:bg-white/5"
+                      : "text-foreground/85 hover:text-foreground hover:bg-white/10"
                   }`
                 }
               >
@@ -39,7 +41,7 @@ export const Navbar = () => {
           ))}
         </ul>
         <button
-          className="lg:hidden p-2 rounded-full hover:bg-white/5"
+          className="lg:hidden p-2 rounded-full hover:bg-white/10"
           onClick={() => setOpen(!open)}
           aria-label="Menu"
         >
@@ -59,7 +61,7 @@ export const Navbar = () => {
                     `block px-4 py-3 rounded-2xl text-sm transition-smooth ${
                       isActive
                         ? "bg-primary/90 text-primary-foreground"
-                        : "text-foreground/80 hover:bg-white/5"
+                        : "text-foreground/85 hover:bg-white/10"
                     }`
                   }
                 >
