@@ -32,10 +32,14 @@ export const Navbar = () => {
 
   return (
     <header
-      className={`fixed top-4 left-1/2 -translate-x-1/2 z-50 w-[calc(100%-2rem)] max-w-6xl animate-fade-in transition-all duration-500 ${
-        hidden ? "-translate-y-[150%] opacity-0 pointer-events-none" : "translate-y-0 opacity-100"
-      }`}
-      style={{ transform: hidden ? "translate(-50%, -150%)" : "translate(-50%, 0)" }}
+      className="fixed top-4 left-1/2 z-50 w-[calc(100%-2rem)] max-w-6xl animate-fade-in"
+      style={{
+        transform: hidden ? "translate(-50%, -160%)" : "translate(-50%, 0)",
+        opacity: hidden ? 0 : 1,
+        pointerEvents: hidden ? "none" : "auto",
+        transition: "transform 450ms cubic-bezier(0.32,0.72,0,1), opacity 300ms ease",
+        willChange: "transform, opacity",
+      }}
     >
       <nav className="glass rounded-full px-3 py-2 flex items-center justify-between gap-2">
         <Link to="/" className="px-4 py-1 font-playfair text-2xl text-gradient leading-none">
