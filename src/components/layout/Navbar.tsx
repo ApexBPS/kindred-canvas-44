@@ -74,7 +74,7 @@ export const Navbar = () => {
             Apex
           </span>
         </Link>
-        <ul className="hidden xl:flex items-center gap-0.5 min-w-0">
+        <ul className="hidden lg:flex items-center gap-0.5 min-w-0">
           {navLinks.map((l) => (
             <li key={l.to}>
               <NavLink
@@ -95,7 +95,7 @@ export const Navbar = () => {
           ))}
         </ul>
         <button
-          className="xl:hidden p-2 rounded-full hover:bg-white/10 shrink-0"
+          className="lg:hidden p-2 rounded-full hover:bg-white/10 shrink-0"
           onClick={() => setOpen(!open)}
           aria-label="Menu"
         >
@@ -103,7 +103,7 @@ export const Navbar = () => {
         </button>
       </nav>
       {open && (
-        <div className="xl:hidden mt-2 glass rounded-3xl p-3 animate-scale-in">
+        <div className="lg:hidden mt-2 glass rounded-3xl p-3 animate-scale-in">
           <ul className="flex flex-col gap-1">
             {navLinks.map((l) => (
               <li key={l.to}>
