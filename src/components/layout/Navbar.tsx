@@ -1,5 +1,5 @@
 import { NavLink, Link } from "react-router-dom";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Menu, X } from "lucide-react";
 
 const links = [
@@ -14,10 +14,31 @@ const links = [
 
 export const Navbar = () => {
   const [open, setOpen] = useState(false);
+  const [hidden, setHidden] = useState(false);
+
+  useEffect(() => {
+    let lastY = window.scrollY;
+    const onScroll = () => {
+      const y = window.scrollY;
+      const goingDown = y > lastY;
+      // Hide when scrolling down past 80px, show when scrolling up
+      if (goingDown && y > 80) setHidden(true);
+      else if (!goingDown) setHidden(false);
+      lastY = y;
+    };
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
   return (
-    <header className="fixed top-4 left-1/2 -translate-x-1/2 z-50 w-[calc(100%-2rem)] max-w-6xl animate-fade-in">
+    <header
+      className={`fixed top-4 left-1/2 -translate-x-1/2 z-50 w-[calc(100%-2rem)] max-w-6xl animate-fade-in transition-all duration-500 ${
+        hidden ? "-translate-y-[150%] opacity-0 pointer-events-none" : "translate-y-0 opacity-100"
+      }`}
+      style={{ transform: hidden ? "translate(-50%, -150%)" : "translate(-50%, 0)" }}
+    >
       <nav className="glass rounded-full px-3 py-2 flex items-center justify-between gap-2">
-        <Link to="/" className="px-4 py-1 font-crave text-3xl text-gradient leading-none">
+        <Link to="/" className="px-4 py-1 font-playfair text-2xl text-gradient leading-none">
           Apex
         </Link>
         <ul className="hidden lg:flex items-center gap-1">

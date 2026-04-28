@@ -31,14 +31,14 @@ const Home = () => {
           </p>
 
           <h1
-            className="font-crave text-gradient leading-[0.85] animate-fade-in"
+            className="font-playfair text-gradient leading-[0.85] animate-fade-in"
             style={{ fontSize: "clamp(6rem, 18vw, 14rem)", animationDelay: "0.1s" }}
           >
             Apex
           </h1>
 
           <h2
-            className="font-crave text-foreground/95 leading-[1] mt-2 animate-fade-in"
+            className="font-playfair text-foreground/95 leading-[1] mt-2 animate-fade-in"
             style={{ fontSize: "clamp(2.2rem, 5.5vw, 4.5rem)", animationDelay: "0.2s" }}
           >
             Business Pitch Summit

@@ -4,7 +4,7 @@ export const Footer = () => (
   <footer className="relative mt-32 px-6 pb-10">
     <div className="max-w-6xl mx-auto glass rounded-3xl p-10 grid md:grid-cols-3 gap-8">
       <div>
-        <h3 className="font-crave text-5xl text-gradient leading-none mb-2">Apex</h3>
+        <h3 className="font-playfair text-5xl text-gradient leading-none mb-2">Apex</h3>
         <p className="text-sm text-muted-foreground max-w-xs font-garamond">
           Business Pitch Summit — where student innovation meets industry-level insight.
         </p>
