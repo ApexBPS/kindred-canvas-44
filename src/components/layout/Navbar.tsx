@@ -1,33 +1,22 @@
-import { NavLink, Link, useLocation, useNavigate } from "react-router-dom";
+import { NavLink, Link, useLocation } from "react-router-dom";
 import { useEffect, useRef, useState } from "react";
 import { Menu, X } from "lucide-react";
 import logo from "@/assets/apex-logo.png";
 
 export const navLinks = [
-  { to: "/", label: "Home", cardId: null as string | null },
-  { to: "/about", label: "About", cardId: "card-about" },
-  { to: "/roles", label: "Roles & Application", cardId: "card-roles" },
-  { to: "/procedure", label: "Procedure", cardId: "card-procedure" },
-  { to: "/team", label: "Our Team", cardId: "card-team" },
-  { to: "/collaborations", label: "Collaborations", cardId: "card-collaborations" },
-  { to: "/categories", label: "Categories", cardId: "card-categories" },
+  { to: "/", label: "Home" },
+  { to: "/about", label: "About" },
+  { to: "/roles", label: "Roles & Application" },
+  { to: "/procedure", label: "Procedure" },
+  { to: "/team", label: "Our Team" },
+  { to: "/collaborations", label: "Collaborations" },
+  { to: "/categories", label: "Categories" },
 ];
-
-const shineCard = (id: string) => {
-  const el = document.getElementById(id);
-  if (!el) return;
-  el.scrollIntoView({ behavior: "smooth", block: "center" });
-  el.classList.remove("card-shine");
-  void el.offsetWidth;
-  el.classList.add("card-shine");
-  window.setTimeout(() => el.classList.remove("card-shine"), 2200);
-};
 
 export const Navbar = () => {
   const [hidden, setHidden] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const location = useLocation();
-  const navigate = useNavigate();
   const lastY = useRef(0);
 
   useEffect(() => {
@@ -48,16 +37,8 @@ export const Navbar = () => {
     setMenuOpen(false);
   }, [location.pathname]);
 
-  const handleClick = (e: React.MouseEvent, link: typeof navLinks[number]) => {
+  const handleClick = () => {
     setMenuOpen(false);
-    if (!link.cardId) return;
-    e.preventDefault();
-    if (location.pathname !== "/") {
-      navigate("/");
-      window.setTimeout(() => shineCard(link.cardId!), 300);
-    } else {
-      shineCard(link.cardId);
-    }
   };
 
   return (
@@ -90,7 +71,7 @@ export const Navbar = () => {
                 <NavLink
                   to={l.to}
                   end={l.to === "/"}
-                  onClick={(e) => handleClick(e, l)}
+                  onClick={handleClick}
                   className={({ isActive }) =>
                     `px-3 py-2 rounded-full text-sm whitespace-nowrap transition-smooth ${
                       isActive
@@ -139,7 +120,7 @@ export const Navbar = () => {
               <NavLink
                 to={l.to}
                 end={l.to === "/"}
-                onClick={(e) => handleClick(e, l)}
+                onClick={handleClick}
                 className={({ isActive }) =>
                   `block px-4 py-3 rounded-2xl text-sm transition-smooth ${
                     isActive
