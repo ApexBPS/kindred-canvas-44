@@ -13,7 +13,7 @@ const roles = [
   },
   {
     title: "Industry Panel",
-    desc: "Industry experts who support the event by offering insight to evaluators and providing guidance during scheduled shifts. They offer professional feedback to innovators but do not take part in final scoring.",
+    desc: "Industry experts who support the event by offering insight to evaluators and providing guidance during scheduled shifts. They offer professional feedback to candidates but do not take part in final scoring.",
   },
   {
     title: "Volunteers",

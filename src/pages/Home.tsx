@@ -79,7 +79,9 @@ const Home = () => {
               Apply now
             </button>
             <button
-              onClick={() => navigate("/about")}
+              onClick={() => {
+                document.getElementById("explore-cards")?.scrollIntoView({ behavior: "smooth", block: "start" });
+              }}
               className="font-garamond text-base inline-flex items-center gap-2 px-8 py-3.5 rounded-full glass text-foreground transition-smooth hover:bg-white/15"
             >
               Learn more
@@ -88,24 +90,30 @@ const Home = () => {
         </div>
       </section>
 
-      {/* Aim · Thrive · Achieve banner */}
+      {/* Aim · Thrive · Achieve marquee banner */}
       <section className="px-6 py-10">
-        <div className="max-w-5xl mx-auto glass rounded-full py-6 px-8 text-center">
-          <p
-            className="font-playfair text-gradient flex items-center justify-center gap-4 sm:gap-8 flex-wrap leading-none"
-            style={{ fontSize: "clamp(1.5rem, 4vw, 3rem)" }}
-          >
-            <span>Aim</span>
-            <span aria-hidden="true" className="text-accent">&middot;</span>
-            <span>Thrive</span>
-            <span aria-hidden="true" className="text-accent">&middot;</span>
-            <span>Achieve</span>
-          </p>
+        <div className="max-w-6xl mx-auto glass rounded-full py-6 overflow-hidden marquee-mask">
+          <div className="flex gap-12 sm:gap-16 animate-marquee whitespace-nowrap will-change-transform">
+            {Array.from({ length: 6 }).map((_, i) => (
+              <p
+                key={i}
+                className="font-playfair text-gradient flex items-center gap-6 sm:gap-10 leading-none shrink-0"
+                style={{ fontSize: "clamp(1.5rem, 4vw, 3rem)" }}
+              >
+                <span>Aim</span>
+                <span aria-hidden="true" className="text-accent">&middot;</span>
+                <span>Thrive</span>
+                <span aria-hidden="true" className="text-accent">&middot;</span>
+                <span>Achieve</span>
+                <span aria-hidden="true" className="text-accent">&middot;</span>
+              </p>
+            ))}
+          </div>
         </div>
       </section>
 
       {/* Explore grid */}
-      <section className="px-6 py-20">
+      <section id="explore-cards" className="px-6 py-20 scroll-mt-32">
         <div className="max-w-6xl mx-auto">
           <div className="flex items-end justify-between mb-12 flex-wrap gap-4">
             <div>
