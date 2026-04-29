@@ -1,5 +1,6 @@
 import { NavLink, Link, useLocation, useNavigate } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
+import { Menu, X } from "lucide-react";
 import logo from "@/assets/apex-logo.png";
 
 export const navLinks = [
@@ -24,28 +25,36 @@ const shineCard = (id: string) => {
 
 export const Navbar = () => {
   const [hidden, setHidden] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
   const location = useLocation();
   const navigate = useNavigate();
+  const lastY = useRef(0);
 
   useEffect(() => {
-    let lastY = window.scrollY;
+    lastY.current = window.scrollY;
     const onScroll = () => {
       const y = window.scrollY;
-      const goingDown = y > lastY;
+      const goingDown = y > lastY.current;
       if (goingDown && y > 80) setHidden(true);
       else if (!goingDown) setHidden(false);
-      lastY = y;
+      lastY.current = y;
     };
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
+  // Close mobile menu on route change
+  useEffect(() => {
+    setMenuOpen(false);
+  }, [location.pathname]);
+
   const handleClick = (e: React.MouseEvent, link: typeof navLinks[number]) => {
-    if (!link.cardId) return; // Home — let it navigate normally
+    setMenuOpen(false);
+    if (!link.cardId) return;
     e.preventDefault();
     if (location.pathname !== "/") {
       navigate("/");
-      window.setTimeout(() => shineCard(link.cardId!), 250);
+      window.setTimeout(() => shineCard(link.cardId!), 300);
     } else {
       shineCard(link.cardId);
     }
@@ -53,7 +62,7 @@ export const Navbar = () => {
 
   return (
     <header
-      className="fixed top-3 left-1/2 z-50 w-[calc(100%-1.5rem)] sm:w-[calc(100%-2rem)] max-w-6xl animate-fade-in"
+      className="fixed top-3 left-1/2 z-50 w-[calc(100%-1.5rem)] sm:w-auto sm:max-w-[calc(100%-2rem)] animate-fade-in"
       style={{
         transform: hidden ? "translate(-50%, -160%)" : "translate(-50%, 0)",
         opacity: hidden ? 0 : 1,
@@ -62,26 +71,23 @@ export const Navbar = () => {
         willChange: "transform, opacity",
       }}
     >
-      <nav className="glass rounded-full pl-2 sm:pl-3 pr-2 py-1.5 sm:py-2 flex items-center gap-2 min-w-0">
+      <nav className="glass rounded-full pl-3 pr-2 py-1.5 sm:py-2 flex items-center gap-2 mx-auto">
         <Link
           to="/"
-          className="flex items-center gap-2 pr-2 shrink-0"
+          className="flex items-center gap-2 pr-1 shrink-0"
           aria-label="Apex BPS — Home"
         >
           <img src={logo} alt="Apex BPS logo" className="h-7 w-7 sm:h-8 sm:w-8 object-contain" />
-          <span className="font-playfair text-lg sm:text-xl text-gradient leading-none hidden xs:inline">
-            Apex
-          </span>
         </Link>
 
-        {/* Scrollable links — fits any screen size, swipe/scroll horizontally if needed */}
-        <div className="relative flex-1 min-w-0">
+        {/* Desktop / tablet: centered scrollable links inside the pill */}
+        <div className="relative hidden sm:block">
           <ul
-            className="nav-scroll flex items-center gap-0.5 overflow-x-auto overflow-y-hidden scroll-smooth snap-x snap-mandatory pr-6 -mr-2"
+            className="nav-scroll flex items-center gap-0.5 overflow-x-auto overflow-y-hidden scroll-smooth max-w-[min(70vw,820px)] pr-6"
             style={{ scrollbarWidth: "none" }}
           >
             {navLinks.map((l) => (
-              <li key={l.to} className="snap-start shrink-0">
+              <li key={l.to} className="shrink-0">
                 <NavLink
                   to={l.to}
                   end={l.to === "/"}
@@ -99,7 +105,6 @@ export const Navbar = () => {
               </li>
             ))}
           </ul>
-          {/* Right-edge fade so cut-off links hint at scrollability */}
           <div
             aria-hidden="true"
             className="pointer-events-none absolute top-0 right-0 h-full w-8 rounded-r-full"
@@ -109,7 +114,48 @@ export const Navbar = () => {
             }}
           />
         </div>
+
+        {/* Mobile: burger button + spacer to keep the logo on the left */}
+        <div className="flex-1 sm:hidden" />
+        <button
+          type="button"
+          aria-label={menuOpen ? "Close menu" : "Open menu"}
+          aria-expanded={menuOpen}
+          onClick={() => setMenuOpen((o) => !o)}
+          className="sm:hidden ml-1 inline-flex items-center justify-center w-9 h-9 rounded-full bg-white/10 hover:bg-white/15 text-foreground transition-smooth"
+        >
+          {menuOpen ? <X size={18} /> : <Menu size={18} />}
+        </button>
       </nav>
+
+      {/* Mobile dropdown */}
+      <div
+        className={`sm:hidden mt-2 origin-top transition-all duration-300 ${
+          menuOpen ? "opacity-100 scale-y-100 pointer-events-auto" : "opacity-0 scale-y-95 pointer-events-none"
+        }`}
+        style={{ transformOrigin: "top right" }}
+      >
+        <ul className="glass-strong rounded-3xl p-2 flex flex-col">
+          {navLinks.map((l) => (
+            <li key={l.to}>
+              <NavLink
+                to={l.to}
+                end={l.to === "/"}
+                onClick={(e) => handleClick(e, l)}
+                className={({ isActive }) =>
+                  `block px-4 py-3 rounded-2xl text-sm transition-smooth ${
+                    isActive
+                      ? "bg-primary/90 text-primary-foreground"
+                      : "text-foreground/90 hover:bg-white/10"
+                  }`
+                }
+              >
+                {l.label}
+              </NavLink>
+            </li>
+          ))}
+        </ul>
+      </div>
     </header>
   );
 };

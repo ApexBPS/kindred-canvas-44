@@ -91,31 +91,43 @@
   body::before {
     content: "";
     position: fixed;
-    inset: -20%;
+    inset: -25%;
     z-index: -2;
     background: var(--gradient-bg);
-    background-size: 220% 220%;
-    animation: bg-shift 24s ease-in-out infinite;
-    filter: saturate(105%);
+    background-size: 260% 260%;
+    animation: bg-shift 18s ease-in-out infinite;
+    filter: saturate(115%);
   }
   body::after {
     content: "";
     position: fixed;
-    inset: 0;
+    inset: -10%;
     z-index: -1;
     pointer-events: none;
     background:
-      radial-gradient(1200px 700px at 15% 10%, hsl(213 53% 82% / 0.18), transparent 60%),
-      radial-gradient(900px 600px at 85% 30%, hsl(32 60% 78% / 0.16), transparent 60%),
-      radial-gradient(1000px 700px at 50% 100%, hsl(42 81% 81% / 0.14), transparent 60%);
+      radial-gradient(900px 600px at 20% 15%, hsl(213 80% 70% / 0.28), transparent 60%),
+      radial-gradient(800px 600px at 85% 25%, hsl(32 80% 65% / 0.26), transparent 60%),
+      radial-gradient(900px 700px at 75% 85%, hsl(280 60% 60% / 0.22), transparent 65%),
+      radial-gradient(700px 600px at 15% 90%, hsl(180 60% 55% / 0.18), transparent 60%),
+      radial-gradient(1100px 800px at 50% 50%, hsl(42 81% 75% / 0.16), transparent 65%);
+    animation: aurora-drift 22s ease-in-out infinite;
+    filter: blur(2px);
   }
 
   @keyframes bg-shift {
     0%   { background-position: 0% 50%; }
-    25%  { background-position: 50% 100%; }
+    25%  { background-position: 60% 100%; }
     50%  { background-position: 100% 50%; }
-    75%  { background-position: 50% 0%; }
+    75%  { background-position: 40% 0%; }
     100% { background-position: 0% 50%; }
+  }
+
+  @keyframes aurora-drift {
+    0%   { transform: translate3d(0, 0, 0) scale(1); opacity: 0.95; }
+    25%  { transform: translate3d(-3%, 2%, 0) scale(1.06); opacity: 1; }
+    50%  { transform: translate3d(2%, -2%, 0) scale(1.1); opacity: 0.9; }
+    75%  { transform: translate3d(-2%, -3%, 0) scale(1.05); opacity: 1; }
+    100% { transform: translate3d(0, 0, 0) scale(1); opacity: 0.95; }
   }
 
   ::selection { background: hsl(var(--accent) / 0.4); color: hsl(var(--foreground)); }

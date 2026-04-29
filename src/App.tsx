@@ -11,6 +11,7 @@ import Team from "./pages/Team.tsx";
 import Collaborations from "./pages/Collaborations.tsx";
 import Categories from "./pages/Categories.tsx";
 import NotFound from "./pages/NotFound.tsx";
+import { ScrollToTop } from "./components/layout/ScrollToTop";
 
 const queryClient = new QueryClient();
 
@@ -20,6 +21,7 @@ const App = () => (
       <Toaster />
       <Sonner />
       <BrowserRouter>
+        <ScrollToTop />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />

@@ -96,9 +96,6 @@ const Home = () => {
               <p className="font-garamond text-xs uppercase tracking-[0.3em] text-accent mb-3">Explore</p>
               <h2 className="font-playfair text-4xl md:text-6xl text-gradient">Where to begin</h2>
             </div>
-            <p className="font-garamond text-foreground/80 max-w-md">
-              Six doors into the same world. Choose the one that matches your curiosity.
-            </p>
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
