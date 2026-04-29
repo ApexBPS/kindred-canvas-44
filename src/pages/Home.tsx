@@ -88,6 +88,22 @@ const Home = () => {
         </div>
       </section>
 
+      {/* Aim · Thrive · Achieve banner */}
+      <section className="px-6 py-10">
+        <div className="max-w-5xl mx-auto glass rounded-full py-6 px-8 text-center">
+          <p
+            className="font-playfair text-gradient flex items-center justify-center gap-4 sm:gap-8 flex-wrap leading-none"
+            style={{ fontSize: "clamp(1.5rem, 4vw, 3rem)" }}
+          >
+            <span>Aim</span>
+            <span aria-hidden="true" className="text-accent">&middot;</span>
+            <span>Thrive</span>
+            <span aria-hidden="true" className="text-accent">&middot;</span>
+            <span>Achieve</span>
+          </p>
+        </div>
+      </section>
+
       {/* Explore grid */}
       <section className="px-6 py-20">
         <div className="max-w-6xl mx-auto">
