@@ -79,7 +79,9 @@ const Home = () => {
               Apply now
             </button>
             <button
-              onClick={() => navigate("/about")}
+              onClick={() => {
+                document.getElementById("explore-cards")?.scrollIntoView({ behavior: "smooth", block: "start" });
+              }}
               className="font-garamond text-base inline-flex items-center gap-2 px-8 py-3.5 rounded-full glass text-foreground transition-smooth hover:bg-white/15"
             >
               Learn more
