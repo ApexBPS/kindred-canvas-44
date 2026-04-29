@@ -37,16 +37,8 @@ export const Navbar = () => {
     setMenuOpen(false);
   }, [location.pathname]);
 
-  const handleClick = (e: React.MouseEvent, link: typeof navLinks[number]) => {
+  const handleClick = () => {
     setMenuOpen(false);
-    if (!link.cardId) return;
-    e.preventDefault();
-    if (location.pathname !== "/") {
-      navigate("/");
-      window.setTimeout(() => shineCard(link.cardId!), 300);
-    } else {
-      shineCard(link.cardId);
-    }
   };
 
   return (
