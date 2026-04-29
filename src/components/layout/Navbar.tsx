@@ -62,16 +62,15 @@ export const Navbar = () => {
 
   return (
     <header
-      className="fixed top-3 left-1/2 z-50 w-[calc(100%-1.5rem)] sm:w-auto sm:max-w-[calc(100%-2rem)] animate-fade-in"
+      className="fixed top-3 left-0 right-0 z-50 px-3 sm:px-4 flex justify-center animate-fade-in pointer-events-none"
       style={{
-        transform: hidden ? "translate(-50%, -160%)" : "translate(-50%, 0)",
+        transform: hidden ? "translateY(-160%)" : "translateY(0)",
         opacity: hidden ? 0 : 1,
-        pointerEvents: hidden ? "none" : "auto",
         transition: "transform 450ms cubic-bezier(0.32,0.72,0,1), opacity 300ms ease",
         willChange: "transform, opacity",
       }}
     >
-      <nav className="glass rounded-full pl-3 pr-2 py-1.5 sm:py-2 flex items-center gap-2 mx-auto">
+      <nav className="glass rounded-full pl-3 pr-2 py-1.5 sm:py-2 flex items-center gap-2 w-full sm:w-auto pointer-events-auto">
         <Link
           to="/"
           className="flex items-center gap-2 pr-1 shrink-0"
