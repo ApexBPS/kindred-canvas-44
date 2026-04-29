@@ -113,7 +113,7 @@ const Home = () => {
       </section>
 
       {/* Explore grid */}
-      <section className="px-6 py-20">
+      <section id="explore-cards" className="px-6 py-20 scroll-mt-32">
         <div className="max-w-6xl mx-auto">
           <div className="flex items-end justify-between mb-12 flex-wrap gap-4">
             <div>
