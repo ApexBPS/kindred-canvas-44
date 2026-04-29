@@ -129,10 +129,9 @@ export const Navbar = () => {
 
       {/* Mobile dropdown */}
       <div
-        className={`sm:hidden mt-2 origin-top transition-all duration-300 ${
+        className={`sm:hidden absolute left-3 right-3 top-full mt-2 origin-top transition-all duration-300 ${
           menuOpen ? "opacity-100 scale-y-100 pointer-events-auto" : "opacity-0 scale-y-95 pointer-events-none"
         }`}
-        style={{ transformOrigin: "top right" }}
       >
         <ul className="glass-strong rounded-3xl p-2 flex flex-col">
           {navLinks.map((l) => (
