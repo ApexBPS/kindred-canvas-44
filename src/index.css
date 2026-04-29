@@ -232,4 +232,17 @@
   /* Hide scrollbar in the navbar's horizontally-scrolling link list */
   .nav-scroll::-webkit-scrollbar { display: none; }
   .nav-scroll { -ms-overflow-style: none; scrollbar-width: none; }
+
+  /* Marquee */
+  @keyframes marquee {
+    0%   { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+  .animate-marquee {
+    animation: marquee 28s linear infinite;
+  }
+  .marquee-mask {
+    -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+            mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+  }
 }
