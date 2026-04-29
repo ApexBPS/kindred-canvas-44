@@ -1,4 +1,4 @@
-import { NavLink, Link, useLocation, useNavigate } from "react-router-dom";
+import { NavLink, Link, useLocation } from "react-router-dom";
 import { useEffect, useRef, useState } from "react";
 import { Menu, X } from "lucide-react";
 import logo from "@/assets/apex-logo.png";
@@ -71,7 +71,7 @@ export const Navbar = () => {
                 <NavLink
                   to={l.to}
                   end={l.to === "/"}
-                  onClick={(e) => handleClick(e, l)}
+                  onClick={handleClick}
                   className={({ isActive }) =>
                     `px-3 py-2 rounded-full text-sm whitespace-nowrap transition-smooth ${
                       isActive
@@ -120,7 +120,7 @@ export const Navbar = () => {
               <NavLink
                 to={l.to}
                 end={l.to === "/"}
-                onClick={(e) => handleClick(e, l)}
+                onClick={handleClick}
                 className={({ isActive }) =>
                   `block px-4 py-3 rounded-2xl text-sm transition-smooth ${
                     isActive
