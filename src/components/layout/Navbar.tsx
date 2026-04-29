@@ -4,30 +4,19 @@ import { Menu, X } from "lucide-react";
 import logo from "@/assets/apex-logo.png";
 
 export const navLinks = [
-  { to: "/", label: "Home", cardId: null as string | null },
-  { to: "/about", label: "About", cardId: "card-about" },
-  { to: "/roles", label: "Roles & Application", cardId: "card-roles" },
-  { to: "/procedure", label: "Procedure", cardId: "card-procedure" },
-  { to: "/team", label: "Our Team", cardId: "card-team" },
-  { to: "/collaborations", label: "Collaborations", cardId: "card-collaborations" },
-  { to: "/categories", label: "Categories", cardId: "card-categories" },
+  { to: "/", label: "Home" },
+  { to: "/about", label: "About" },
+  { to: "/roles", label: "Roles & Application" },
+  { to: "/procedure", label: "Procedure" },
+  { to: "/team", label: "Our Team" },
+  { to: "/collaborations", label: "Collaborations" },
+  { to: "/categories", label: "Categories" },
 ];
-
-const shineCard = (id: string) => {
-  const el = document.getElementById(id);
-  if (!el) return;
-  el.scrollIntoView({ behavior: "smooth", block: "center" });
-  el.classList.remove("card-shine");
-  void el.offsetWidth;
-  el.classList.add("card-shine");
-  window.setTimeout(() => el.classList.remove("card-shine"), 2200);
-};
 
 export const Navbar = () => {
   const [hidden, setHidden] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const location = useLocation();
-  const navigate = useNavigate();
   const lastY = useRef(0);
 
   useEffect(() => {
