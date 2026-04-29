@@ -90,19 +90,25 @@ const Home = () => {
         </div>
       </section>
 
-      {/* Aim · Thrive · Achieve banner */}
+      {/* Aim · Thrive · Achieve marquee banner */}
       <section className="px-6 py-10">
-        <div className="max-w-5xl mx-auto glass rounded-full py-6 px-8 text-center">
-          <p
-            className="font-playfair text-gradient flex items-center justify-center gap-4 sm:gap-8 flex-wrap leading-none"
-            style={{ fontSize: "clamp(1.5rem, 4vw, 3rem)" }}
-          >
-            <span>Aim</span>
-            <span aria-hidden="true" className="text-accent">&middot;</span>
-            <span>Thrive</span>
-            <span aria-hidden="true" className="text-accent">&middot;</span>
-            <span>Achieve</span>
-          </p>
+        <div className="max-w-6xl mx-auto glass rounded-full py-6 overflow-hidden marquee-mask">
+          <div className="flex gap-12 sm:gap-16 animate-marquee whitespace-nowrap will-change-transform">
+            {Array.from({ length: 6 }).map((_, i) => (
+              <p
+                key={i}
+                className="font-playfair text-gradient flex items-center gap-6 sm:gap-10 leading-none shrink-0"
+                style={{ fontSize: "clamp(1.5rem, 4vw, 3rem)" }}
+              >
+                <span>Aim</span>
+                <span aria-hidden="true" className="text-accent">&middot;</span>
+                <span>Thrive</span>
+                <span aria-hidden="true" className="text-accent">&middot;</span>
+                <span>Achieve</span>
+                <span aria-hidden="true" className="text-accent">&middot;</span>
+              </p>
+            ))}
+          </div>
         </div>
       </section>
 
