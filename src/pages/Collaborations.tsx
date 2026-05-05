@@ -128,7 +128,15 @@ const Collaborations = () => {
       <Section title="Collaborations" items={collaborations} onDetails={setActive} />
 
       <Dialog open={!!active} onOpenChange={(o) => !o && setActive(null)}>
-        <DialogContent className="max-w-xl border-white/15 bg-background/85 backdrop-blur-2xl shadow-2xl">
+        <DialogContent
+          className={`max-w-xl backdrop-blur-xl shadow-2xl ${
+            active?.tint === "red"
+              ? "border-[hsl(0_70%_50%/0.45)] bg-[hsl(0_55%_18%/0.55)]"
+              : active?.tint === "blue"
+                ? "border-[hsl(213_85%_60%/0.45)] bg-[hsl(213_70%_22%/0.55)]"
+                : "border-white/15 bg-background/55"
+          }`}
+        >
           <DialogTitle className="font-playfair text-3xl md:text-4xl text-gradient pr-8">
             {active?.name}
           </DialogTitle>
@@ -136,7 +144,7 @@ const Collaborations = () => {
           {active?.details && (
             <p
               key={active.name}
-              className="font-garamond text-lg leading-relaxed text-foreground/90 animate-blur-in"
+              className="font-garamond text-lg leading-relaxed text-foreground/95 animate-blur-in"
             >
               {active.details}
             </p>
