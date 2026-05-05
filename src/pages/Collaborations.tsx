@@ -66,19 +66,19 @@ const EntryCard = ({
   }
   return (
     <div
-      className={`relative rounded-3xl p-7 transition-smooth animate-fade-in flex flex-col ${tintStyles[entry.tint ?? "none"]}`}
+      className={`relative rounded-3xl p-6 transition-smooth animate-fade-in flex flex-col ${tintStyles[entry.tint ?? "none"]}`}
       style={{ animationDelay: `${i * 0.06}s` }}
     >
-      <div className="flex items-center gap-5">
+      <div className="flex items-center gap-4">
         {entry.logo && (
-          <img
-            src={entry.logo}
-            alt={`${entry.name} logo`}
-            loading="lazy"
-            width={256}
-            height={256}
-            className="w-40 h-40 md:w-48 md:h-48 object-contain shrink-0 drop-shadow-lg"
-          />
+          <div className="w-20 h-20 shrink-0 flex items-center justify-center overflow-hidden">
+            <img
+              src={entry.logo}
+              alt={`${entry.name} logo`}
+              loading="lazy"
+              className="w-full h-full object-contain scale-150 drop-shadow-lg"
+            />
+          </div>
         )}
         <h3 className="font-playfair text-2xl md:text-3xl text-foreground leading-tight">
           {entry.name}
