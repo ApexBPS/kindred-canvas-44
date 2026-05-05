@@ -76,7 +76,7 @@ const EntryCard = ({
               src={entry.logo}
               alt={`${entry.name} logo`}
               loading="lazy"
-              className="w-full h-full object-contain scale-150 drop-shadow-lg"
+              className="w-full h-full object-contain scale-[2] drop-shadow-lg"
             />
           </div>
         )}
