@@ -95,8 +95,12 @@ export const Navbar = () => {
           />
         </div>
 
-        {/* Mobile: burger button + spacer to keep the logo on the left */}
-        <div className="flex-1 sm:hidden" />
+        {/* Mobile: tagline + burger */}
+        <div className="flex-1 sm:hidden flex items-center justify-center px-2">
+          <span className="font-garamond text-[10px] uppercase tracking-[0.2em] text-foreground/70 whitespace-nowrap">
+            Where Ideas Meet Their Apex
+          </span>
+        </div>
         <button
           type="button"
           aria-label={menuOpen ? "Close menu" : "Open menu"}
