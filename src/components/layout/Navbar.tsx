@@ -10,7 +10,7 @@ export const navLinks = [
   { to: "/procedure", label: "Procedure" },
   { to: "/team", label: "Our Team" },
   { to: "/collaborations", label: "Collaborations" },
-  { to: "/categories", label: "Categories" },
+  { to: "/categories", label: "Industries" },
 ];
 
 export const Navbar = () => {
