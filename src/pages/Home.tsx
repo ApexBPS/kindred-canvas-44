@@ -17,7 +17,7 @@ const cards = [
   { id: "card-procedure", to: "/procedure", icon: Workflow, title: "Procedure", desc: "How the summit unfolds, step by step." },
   { id: "card-team", to: "/team", icon: Users, title: "Our Team", desc: "The directorate behind the practice." },
   { id: "card-collaborations", to: "/collaborations", icon: Handshake, title: "Collaborations", desc: "Partners shaping work alongside us." },
-  { id: "card-categories", to: "/categories", icon: FolderKanban, title: "Categories", desc: "Explore the verticals you can pitch in." },
+  { id: "card-categories", to: "/categories", icon: FolderKanban, title: "Industries", desc: "Explore the verticals you can pitch in." },
 ];
 
 const Home = () => {

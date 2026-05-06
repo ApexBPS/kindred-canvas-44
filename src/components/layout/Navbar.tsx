@@ -10,7 +10,7 @@ export const navLinks = [
   { to: "/procedure", label: "Procedure" },
   { to: "/team", label: "Our Team" },
   { to: "/collaborations", label: "Collaborations" },
-  { to: "/categories", label: "Categories" },
+  { to: "/categories", label: "Industries" },
 ];
 
 export const Navbar = () => {
@@ -95,8 +95,12 @@ export const Navbar = () => {
           />
         </div>
 
-        {/* Mobile: burger button + spacer to keep the logo on the left */}
-        <div className="flex-1 sm:hidden" />
+        {/* Mobile: tagline + burger */}
+        <div className="flex-1 sm:hidden flex items-center justify-center px-2">
+          <span className="font-garamond text-[10px] uppercase tracking-[0.2em] text-foreground/70 whitespace-nowrap">
+            Where Ideas Meet Their Apex
+          </span>
+        </div>
         <button
           type="button"
           aria-label={menuOpen ? "Close menu" : "Open menu"}
@@ -114,7 +118,7 @@ export const Navbar = () => {
           menuOpen ? "opacity-100 scale-y-100 pointer-events-auto" : "opacity-0 scale-y-95 pointer-events-none"
         }`}
       >
-        <ul className="glass-strong rounded-3xl p-2 flex flex-col">
+        <ul className="rounded-3xl p-2 flex flex-col bg-background/90 backdrop-blur-xl border border-white/10 shadow-2xl">
           {navLinks.map((l) => (
             <li key={l.to}>
               <NavLink

@@ -1,28 +1,57 @@
-import { useState } from "react";
+import { useState, CSSProperties } from "react";
 import { PageShell } from "@/components/layout/PageShell";
 import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog";
 import vocLogo from "@/assets/voc-debate.png";
 import ylLogo from "@/assets/youthlinker.png";
-
-type Tint = "red" | "blue" | "none";
+import yashLogo from "@/assets/yash-club.png";
+import vrLogo from "@/assets/velours-rouge.png";
+import serosLogo from "@/assets/seros-sweets.png";
 
 type Entry = {
   name: string;
   logo?: string;
-  tint?: Tint;
+  /** HSL triplet, e.g. "0 70% 45%". When set, tints panel + modal. */
+  tint?: string;
   details?: string;
   placeholder?: boolean;
 };
 
-const VOC_DETAILS =
-  "VOC will be joining Apex Business Pitch Summit as panelists for the Services & Experiences industry, offering insights, feedback, and perspective to support and elevate participating ideas.";
-
-const YL_DETAILS =
-  "Youthlinker joins Apex Business Pitch Summit as panelists for the Services & Experiences industry, delivering sharp insights and constructive feedback to help refine and elevate participants’ ideas.";
-
 const panelists: Entry[] = [
-  { name: "Voices of Change Debate Club", logo: vocLogo, tint: "red", details: VOC_DETAILS },
-  { name: "Youthlinker", logo: ylLogo, tint: "blue", details: YL_DETAILS },
+  {
+    name: "Voices of Change Debate Club",
+    logo: vocLogo,
+    tint: "0 70% 45%",
+    details:
+      "VOC will be joining Apex Business Pitch Summit as panelists for the Services & Experiences industry, offering insights, feedback, and perspective to support and elevate participating ideas.",
+  },
+  {
+    name: "Youthlinker",
+    logo: ylLogo,
+    tint: "213 85% 55%",
+    details:
+      "Youthlinker joins Apex Business Pitch Summit as panelists for the Services & Experiences industry, delivering sharp insights and constructive feedback to help refine and elevate participants’ ideas.",
+  },
+  {
+    name: "Yash Club",
+    logo: yashLogo,
+    tint: "265 55% 70%",
+    details:
+      "Yash Club joins Apex Business Pitch Summit as panelists for the Physical Products industry, offering practical insights and constructive feedback to help shape and strengthen participants’ ideas.",
+  },
+  {
+    name: "Velours Rouge",
+    logo: vrLogo,
+    tint: "350 70% 70%",
+    details:
+      "Velours Rouge joins Apex Business Pitch Summit as panelists for the Culinary industry, bringing refined perspectives and thoughtful feedback to elevate participants’ concepts.",
+  },
+  {
+    name: "Serossweets",
+    logo: serosLogo,
+    tint: "25 55% 40%",
+    details:
+      "Serossweets joins Apex Business Pitch Summit as panelists for the Culinary industry, providing valuable insights and guidance to help refine and enhance participants’ ideas.",
+  },
 ];
 
 const collaborations: Entry[] = [
@@ -30,11 +59,24 @@ const collaborations: Entry[] = [
   { name: "Coming soon", placeholder: true },
 ];
 
-const tintStyles: Record<Tint, string> = {
-  red: "glass border border-[hsl(0_70%_45%/0.35)] bg-[hsl(0_70%_30%/0.18)] hover:bg-[hsl(0_70%_30%/0.25)]",
-  blue: "glass border border-[hsl(213_85%_55%/0.4)] bg-[hsl(213_85%_45%/0.18)] hover:bg-[hsl(213_85%_45%/0.25)]",
-  none: "glass hover:bg-white/10",
-};
+const tintStyle = (tint?: string): CSSProperties =>
+  tint
+    ? {
+        backgroundColor: `hsl(${tint} / 0.18)`,
+        borderColor: `hsl(${tint} / 0.4)`,
+      }
+    : {};
+
+const modalTintStyle = (tint?: string): CSSProperties =>
+  tint
+    ? {
+        // pull lightness down a bit for the modal background
+        backgroundColor: `hsl(${tint.replace(/\d+%\s*$/, (m) =>
+          `${Math.max(15, parseInt(m) - 25)}%`,
+        )} / 0.55)`,
+        borderColor: `hsl(${tint} / 0.5)`,
+      }
+    : {};
 
 const SectionHeader = ({ title }: { title: string }) => (
   <div className="max-w-5xl mx-auto mb-10 text-center">
@@ -66,8 +108,8 @@ const EntryCard = ({
   }
   return (
     <div
-      className={`relative rounded-3xl p-6 transition-smooth animate-fade-in flex flex-col ${tintStyles[entry.tint ?? "none"]}`}
-      style={{ animationDelay: `${i * 0.06}s` }}
+      className="relative rounded-3xl p-6 transition-smooth animate-fade-in flex flex-col glass border hover:bg-white/10"
+      style={{ animationDelay: `${i * 0.06}s`, ...tintStyle(entry.tint) }}
     >
       <div className="flex items-center gap-4">
         {entry.logo && (
@@ -129,13 +171,8 @@ const Collaborations = () => {
 
       <Dialog open={!!active} onOpenChange={(o) => !o && setActive(null)}>
         <DialogContent
-          className={`max-w-xl backdrop-blur-xl shadow-2xl ${
-            active?.tint === "red"
-              ? "border-[hsl(0_70%_50%/0.45)] bg-[hsl(0_55%_18%/0.55)]"
-              : active?.tint === "blue"
-                ? "border-[hsl(213_85%_60%/0.45)] bg-[hsl(213_70%_22%/0.55)]"
-                : "border-white/15 bg-background/55"
-          }`}
+          className="max-w-xl backdrop-blur-xl shadow-2xl border bg-background/55"
+          style={modalTintStyle(active?.tint)}
         >
           <DialogTitle className="font-playfair text-3xl md:text-4xl text-gradient pr-8">
             {active?.name}
