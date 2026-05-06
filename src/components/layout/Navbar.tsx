@@ -118,7 +118,7 @@ export const Navbar = () => {
           menuOpen ? "opacity-100 scale-y-100 pointer-events-auto" : "opacity-0 scale-y-95 pointer-events-none"
         }`}
       >
-        <ul className="glass-strong rounded-3xl p-2 flex flex-col">
+        <ul className="rounded-3xl p-2 flex flex-col bg-background/90 backdrop-blur-xl border border-white/10 shadow-2xl">
           {navLinks.map((l) => (
             <li key={l.to}>
               <NavLink

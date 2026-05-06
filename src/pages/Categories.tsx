@@ -38,7 +38,7 @@ const columns = [
 ];
 
 const Categories = () => (
-  <PageShell kicker="Disciplines" title="Categories">
+  <PageShell kicker="Disciplines" title="Industries">
     <p className="max-w-2xl mx-auto text-center text-muted-foreground -mt-8 mb-16 font-garamond">
       Three tracks where ideas find their shape — choose the one that fits your vision.
     </p>
