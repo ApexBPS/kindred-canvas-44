@@ -113,12 +113,12 @@ const EntryCard = ({
     >
       <div className="flex items-center gap-4">
         {entry.logo && (
-          <div className="w-20 h-20 shrink-0 flex items-center justify-center overflow-hidden">
+          <div className="w-20 h-20 shrink-0 flex items-center justify-center">
             <img
               src={entry.logo}
               alt={`${entry.name} logo`}
               loading="lazy"
-              className="w-full h-full object-contain scale-[2] drop-shadow-lg"
+              className="w-[160px] h-[160px] object-contain drop-shadow-lg"
             />
           </div>
         )}
