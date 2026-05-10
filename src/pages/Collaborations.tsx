@@ -168,8 +168,9 @@ const Collaborations = () => {
         The panelists and partners shaping the Apex experience.
       </p>
 
-      <Section title="Panelists" items={panelists} onDetails={setActive} />
-      <Section title="Collaborations" items={collaborations} onDetails={setActive} />
+      <Section id="panelists" title="Panelists" items={panelists} onDetails={setActive} />
+      <Section title="Sponsors" items={sponsors} onDetails={setActive} wide />
+      <Section title="Attendees" items={attendees} onDetails={setActive} wide />
 
       <Dialog open={!!active} onOpenChange={(o) => !o && setActive(null)}>
         <DialogContent
