@@ -1,40 +1,61 @@
+import { Link } from "react-router-dom";
+import { ArrowRight } from "lucide-react";
 import { Navbar } from "@/components/layout/Navbar";
 import { BackButton } from "@/components/layout/BackButton";
 import { Footer } from "@/components/layout/Footer";
 
-const roles = [
+type Role = {
+  title: string;
+  desc: string;
+  cta: { label: string; to?: string; disabled?: boolean };
+};
+
+const roles: Role[] = [
   {
     title: "Candidates",
     desc: "Participants who present pre-developed business ideas. During the event, they demonstrate their ability to execute, refine, and follow through on their concepts, showcasing viability and potential.",
+    cta: { label: "Apply Now", disabled: true },
   },
   {
     title: "Adjudicators",
     desc: "Leads responsible for guiding candidates throughout the event. They provide feedback, ensure progress, and assess projects using the official scoring system.",
+    cta: { label: "Apply Now", disabled: true },
   },
   {
     title: "Industry Panel",
     desc: "Industry experts who support the event by offering insight to evaluators and providing guidance during scheduled shifts. They offer professional feedback to candidates but do not take part in final scoring.",
+    cta: { label: "View More", to: "/collaborations#panelists" },
   },
   {
     title: "Volunteers",
     desc: "Assist in pre-event preparation and help address participant needs. They support setup and ensure necessary resources are in place for the event to run smoothly.",
+    cta: { label: "Apply Now", disabled: true },
   },
   {
     title: "Security",
     desc: "Responsible for maintaining a safe and controlled environment. They manage access, monitor activity, and ensure all participants follow event rules.",
+    cta: { label: "Apply Now", disabled: true },
   },
   {
     title: "Press",
     desc: "Covers the event through media, interviews, and content creation. They document key moments, highlight candidates' work, and promote the event.",
+    cta: { label: "Apply Now", disabled: true },
   },
 ];
+
+const ctaBase =
+  "inline-flex items-center gap-1.5 text-xs uppercase tracking-[0.2em] underline underline-offset-4 transition-smooth";
+// dimmed beige (no glow) — swap to glowing variant when applications open
+const ctaDimmed =
+  "text-[hsl(40_35%_55%/0.55)] cursor-not-allowed pointer-events-none";
+const ctaGlow =
+  "text-[hsl(40_75%_70%)] hover:text-[hsl(40_90%_80%)] [text-shadow:0_0_10px_hsl(40_85%_65%/0.7)]";
 
 const Roles = () => (
   <div className="min-h-dvh">
     <Navbar />
-      <BackButton />
-    <main className="pt-32 px-6">
-      {/* Section 1 - left aligned */}
+    <BackButton />
+    <main className="pt-32 px-6 pb-20">
       <section className="max-w-5xl mx-auto animate-fade-in">
         <h1
           className="font-playfair text-gradient leading-[1.05]"
@@ -44,30 +65,29 @@ const Roles = () => (
         </h1>
 
         <div className="mt-14 grid md:grid-cols-2 gap-5">
-          {roles.map((r, i) => (
-            <article
-              key={r.title}
-              className="glass rounded-3xl p-7 transition-smooth hover:bg-white/15 animate-fade-in"
-              style={{ animationDelay: `${i * 0.06}s` }}
-            >
-              <h3 className="font-playfair text-2xl md:text-3xl text-foreground">{r.title}</h3>
-              <div className="gradient-line mt-3 mb-4 max-w-[80%]" />
-              <p className="font-garamond text-base text-foreground/85 leading-relaxed">{r.desc}</p>
-            </article>
-          ))}
+          {roles.map((r, i) => {
+            const cta = (
+              <span className={`${ctaBase} ${r.cta.disabled ? ctaDimmed : ctaGlow}`}>
+                {r.cta.label}
+                <ArrowRight className="w-3.5 h-3.5" />
+              </span>
+            );
+            return (
+              <article
+                key={r.title}
+                className="relative glass rounded-3xl p-7 pt-12 transition-smooth hover:bg-white/15 animate-fade-in"
+                style={{ animationDelay: `${i * 0.06}s` }}
+              >
+                <div className="absolute top-4 right-5">
+                  {r.cta.to ? <Link to={r.cta.to}>{cta}</Link> : cta}
+                </div>
+                <h3 className="font-playfair text-2xl md:text-3xl text-foreground">{r.title}</h3>
+                <div className="gradient-line mt-3 mb-4 max-w-[80%]" />
+                <p className="font-garamond text-base text-foreground/85 leading-relaxed">{r.desc}</p>
+              </article>
+            );
+          })}
         </div>
-      </section>
-
-      {/* Section 2 - centered */}
-      <section className="max-w-3xl mx-auto mt-32 mb-16 text-center animate-fade-in">
-        <h2 className="font-playfair text-gradient" style={{ fontSize: "clamp(2.5rem, 6vw, 4.5rem)" }}>
-          Applications
-        </h2>
-        <div className="gradient-line my-8 max-w-md mx-auto" />
-        <p className="font-playfair text-foreground/95" style={{ fontSize: "clamp(2.5rem, 6vw, 4.5rem)" }}>
-          Coming Soon
-        </p>
-        <div className="gradient-line my-8 max-w-md mx-auto" />
       </section>
     </main>
     <Footer />

@@ -54,10 +54,8 @@ const panelists: Entry[] = [
   },
 ];
 
-const collaborations: Entry[] = [
-  { name: "Coming soon", placeholder: true },
-  { name: "Coming soon", placeholder: true },
-];
+const sponsors: Entry[] = [{ name: "Coming soon", placeholder: true }];
+const attendees: Entry[] = [{ name: "Coming soon", placeholder: true }];
 
 const tintStyle = (tint?: string): CSSProperties =>
   tint
@@ -142,14 +140,18 @@ const Section = ({
   title,
   items,
   onDetails,
+  id,
+  wide,
 }: {
   title: string;
   items: Entry[];
   onDetails: (e: Entry) => void;
+  id?: string;
+  wide?: boolean;
 }) => (
-  <section className="mb-20">
+  <section id={id} className="mb-20 scroll-mt-32">
     <SectionHeader title={title} />
-    <div className="max-w-5xl mx-auto grid md:grid-cols-2 gap-5">
+    <div className={`max-w-5xl mx-auto grid gap-5 ${wide ? "" : "md:grid-cols-2"}`}>
       {items.map((p, i) => (
         <EntryCard key={`${title}-${p.name}-${i}`} entry={p} i={i} onDetails={onDetails} />
       ))}
@@ -166,8 +168,9 @@ const Collaborations = () => {
         The panelists and partners shaping the Apex experience.
       </p>
 
-      <Section title="Panelists" items={panelists} onDetails={setActive} />
-      <Section title="Collaborations" items={collaborations} onDetails={setActive} />
+      <Section id="panelists" title="Panelists" items={panelists} onDetails={setActive} />
+      <Section title="Sponsors" items={sponsors} onDetails={setActive} wide />
+      <Section title="Attendees" items={attendees} onDetails={setActive} wide />
 
       <Dialog open={!!active} onOpenChange={(o) => !o && setActive(null)}>
         <DialogContent
