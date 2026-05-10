@@ -13,10 +13,13 @@ export const Footer = () => (
 
       <div className="text-sm space-y-2 font-garamond">
         <p className="text-foreground/70 mb-3 uppercase tracking-widest text-xs">Explore</p>
+        <Link to="/" className="block hover:text-accent transition-smooth">Home</Link>
         <Link to="/about" className="block hover:text-accent transition-smooth">About</Link>
         <Link to="/roles" className="block hover:text-accent transition-smooth">Roles & Application</Link>
         <Link to="/procedure" className="block hover:text-accent transition-smooth">Procedure</Link>
         <Link to="/team" className="block hover:text-accent transition-smooth">Our Team</Link>
+        <Link to="/collaborations" className="block hover:text-accent transition-smooth">Collaborations</Link>
+        <Link to="/categories" className="block hover:text-accent transition-smooth">Industries</Link>
       </div>
 
       <div className="text-sm space-y-2 font-garamond">
