@@ -54,10 +54,8 @@ const panelists: Entry[] = [
   },
 ];
 
-const collaborations: Entry[] = [
-  { name: "Coming soon", placeholder: true },
-  { name: "Coming soon", placeholder: true },
-];
+const sponsors: Entry[] = [{ name: "Coming soon", placeholder: true }];
+const attendees: Entry[] = [{ name: "Coming soon", placeholder: true }];
 
 const tintStyle = (tint?: string): CSSProperties =>
   tint
