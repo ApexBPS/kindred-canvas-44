@@ -140,14 +140,18 @@ const Section = ({
   title,
   items,
   onDetails,
+  id,
+  wide,
 }: {
   title: string;
   items: Entry[];
   onDetails: (e: Entry) => void;
+  id?: string;
+  wide?: boolean;
 }) => (
-  <section className="mb-20">
+  <section id={id} className="mb-20 scroll-mt-32">
     <SectionHeader title={title} />
-    <div className="max-w-5xl mx-auto grid md:grid-cols-2 gap-5">
+    <div className={`max-w-5xl mx-auto grid gap-5 ${wide ? "" : "md:grid-cols-2"}`}>
       {items.map((p, i) => (
         <EntryCard key={`${title}-${p.name}-${i}`} entry={p} i={i} onDetails={onDetails} />
       ))}
