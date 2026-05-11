@@ -45,7 +45,7 @@ export const Footer = () => (
           <span>apexbusinesspitchsummit@gmail.com</span>
         </a>
         <a
-          href="https://www.instagram.com/apex.bps?igsh=MW85cWt6NG15ZDlo&wa_status_inline=true"
+          href="https://www.instagram.com/apex.bps/"
           target="_blank"
           rel="noopener noreferrer"
           className="flex items-start gap-2 text-muted-foreground hover:text-accent transition-smooth"
