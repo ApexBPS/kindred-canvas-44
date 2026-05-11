@@ -24,14 +24,7 @@ const Home = () => {
   const navigate = useNavigate();
 
   const handleApply = () => {
-    const el = document.getElementById("card-roles");
-    if (el) {
-      el.scrollIntoView({ behavior: "smooth", block: "center" });
-      el.classList.remove("card-shine");
-      void el.offsetWidth;
-      el.classList.add("card-shine");
-      window.setTimeout(() => el.classList.remove("card-shine"), 2200);
-    }
+    navigate("/roles");
   };
 
   return (
