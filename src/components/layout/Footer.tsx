@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { Phone, Mail } from "lucide-react";
+import { Phone, Mail, Instagram } from "lucide-react";
 
 export const Footer = () => (
   <footer className="relative mt-32 px-6 pb-10">
