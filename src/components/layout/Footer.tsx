@@ -44,6 +44,15 @@ export const Footer = () => (
           <Mail size={14} className="mt-1 shrink-0" />
           <span>apexbusinesspitchsummit@gmail.com</span>
         </a>
+        <a
+          href="https://www.instagram.com/apex.bps?igsh=MW85cWt6NG15ZDlo&wa_status_inline=true"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="flex items-start gap-2 text-muted-foreground hover:text-accent transition-smooth"
+        >
+          <Instagram size={14} className="mt-1 shrink-0" />
+          <span>apex.bps</span>
+        </a>
       </div>
     </div>
     <p className="text-center text-xs text-muted-foreground mt-6 font-garamond">
