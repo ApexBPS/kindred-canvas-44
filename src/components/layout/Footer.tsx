@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { Phone, Mail } from "lucide-react";
+import { Phone, Mail, Instagram } from "lucide-react";
 
 export const Footer = () => (
   <footer className="relative mt-32 px-6 pb-10">
@@ -43,6 +43,15 @@ export const Footer = () => (
         >
           <Mail size={14} className="mt-1 shrink-0" />
           <span>apexbusinesspitchsummit@gmail.com</span>
+        </a>
+        <a
+          href="https://www.instagram.com/apex.bps?igsh=MW85cWt6NG15ZDlo&wa_status_inline=true"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="flex items-start gap-2 text-muted-foreground hover:text-accent transition-smooth"
+        >
+          <Instagram size={14} className="mt-1 shrink-0" />
+          <span>apex.bps</span>
         </a>
       </div>
     </div>
