@@ -12,7 +12,6 @@ import Collaborations from "./pages/Collaborations.tsx";
 import Categories from "./pages/Categories.tsx";
 import NotFound from "./pages/NotFound.tsx";
 import { ScrollToTop } from "./components/layout/ScrollToTop";
-import { GradientWaveBackground } from "./components/GradientWaveBackground";
 
 const queryClient = new QueryClient();
 
@@ -21,7 +20,6 @@ const App = () => (
     <TooltipProvider>
       <Toaster />
       <Sonner />
-      <GradientWaveBackground />
       <BrowserRouter>
         <ScrollToTop />
         <Routes>

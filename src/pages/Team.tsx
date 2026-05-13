@@ -3,7 +3,6 @@ import { ArrowDown } from "lucide-react";
 import { Navbar } from "@/components/layout/Navbar";
 import { BackButton } from "@/components/layout/BackButton";
 import { Footer } from "@/components/layout/Footer";
-import { useReveal } from "@/hooks/use-reveal";
 
 const members: { name: string; role: string }[] = [
   { name: "Layal Abounaem", role: "Director-General" },
@@ -28,14 +27,13 @@ const members: { name: string; role: string }[] = [
 
 const Team = () => {
   const membersRef = useRef<HTMLDivElement>(null);
-  useReveal();
   return (
     <div className="min-h-dvh">
       <Navbar />
       <BackButton />
       <main className="pt-32 px-6">
         {/* Section 1 */}
-        <section className="max-w-4xl mx-auto text-center reveal">
+        <section className="max-w-4xl mx-auto text-center animate-fade-in">
           <h1
             className="font-playfair text-gradient leading-[1.05]"
             style={{ fontSize: "clamp(2.8rem, 7vw, 6rem)" }}
@@ -59,7 +57,7 @@ const Team = () => {
         </section>
 
         {/* Section 2 */}
-        <section ref={membersRef} className="mt-32 reveal">
+        <section ref={membersRef} className="mt-32">
           <div className="max-w-5xl mx-auto text-center mb-14">
             <h2
               className="font-playfair text-gradient leading-[1.05]"
@@ -76,8 +74,8 @@ const Team = () => {
             {members.map((m, i) => (
               <div
                 key={m.name}
-                className="text-center reveal"
-                style={{ transitionDelay: `${i * 50}ms` }}
+                className="text-center animate-fade-in"
+                style={{ animationDelay: `${i * 0.04}s` }}
               >
                 <div className="font-garamond uppercase tracking-[0.06em] text-xl md:text-2xl text-foreground leading-tight">
                   {m.name}
