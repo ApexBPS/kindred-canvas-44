@@ -75,15 +75,16 @@ const Home = () => {
           >
             <button
               onClick={handleApply}
-              className="font-garamond text-base inline-flex items-center gap-2 px-8 py-3.5 rounded-full bg-gradient-warm text-primary-foreground font-medium shadow-glow transition-smooth hover:scale-[1.02]"
+              className="btn-sheen font-garamond text-base inline-flex items-center gap-2 px-8 py-3.5 rounded-full bg-gradient-warm text-primary-foreground font-medium shadow-glow transition-smooth hover:scale-[1.03] hover:shadow-[0_0_60px_hsl(42_81%_75%/0.55)]"
             >
               Apply now
+              <ArrowRight size={16} className="transition-transform group-hover:translate-x-1" />
             </button>
             <button
               onClick={() => {
                 document.getElementById("explore-cards")?.scrollIntoView({ behavior: "smooth", block: "start" });
               }}
-              className="font-garamond text-base inline-flex items-center gap-2 px-8 py-3.5 rounded-full glass text-foreground transition-smooth hover:bg-white/15"
+              className="font-garamond text-base inline-flex items-center gap-2 px-8 py-3.5 rounded-full glass glass-bordered text-foreground transition-smooth hover:bg-white/15 hover:scale-[1.02]"
             >
               Learn more
             </button>
