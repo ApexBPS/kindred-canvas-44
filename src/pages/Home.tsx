@@ -117,7 +117,8 @@ const Home = () => {
       {/* Explore grid */}
       <section id="explore-cards" className="px-6 py-20 scroll-mt-32">
         <div className="max-w-6xl mx-auto">
-          <div className="flex items-end justify-between mb-12 flex-wrap gap-4">
+          <div className="divider-shine mb-16 max-w-md mx-auto" aria-hidden />
+          <div className="flex items-end justify-between mb-12 flex-wrap gap-4 reveal">
             <div>
               <p className="font-garamond text-xs uppercase tracking-[0.3em] text-accent mb-3">Explore</p>
               <h2 className="font-playfair text-4xl md:text-6xl text-gradient">Where to begin</h2>
@@ -130,16 +131,17 @@ const Home = () => {
                 key={c.to}
                 id={c.id}
                 onClick={() => navigate(c.to)}
-                className="card-pulse-target group glass rounded-3xl p-7 text-left transition-smooth hover:bg-white/15 hover:-translate-y-1 animate-fade-in"
-                style={{ animationDelay: `${i * 0.07}s` }}
+                className="card-pulse-target card-premium glass glass-bordered group rounded-3xl p-7 text-left reveal"
+                style={{ transitionDelay: `${i * 60}ms` }}
               >
-                <div className="w-12 h-12 rounded-2xl bg-gradient-warm flex items-center justify-center mb-6 shadow-glow">
+                <div className="relative w-12 h-12 rounded-2xl bg-gradient-warm flex items-center justify-center mb-6 shadow-glow transition-transform duration-500 group-hover:scale-110 group-hover:rotate-[-4deg]">
                   <c.icon size={20} className="text-primary-foreground" />
+                  <span aria-hidden className="absolute inset-0 rounded-2xl ring-1 ring-white/30" />
                 </div>
                 <h3 className="font-playfair text-2xl mb-2">{c.title}</h3>
                 <p className="font-garamond text-sm text-foreground/75 mb-6">{c.desc}</p>
                 <div className="font-garamond inline-flex items-center gap-2 text-sm text-accent">
-                  Open <ArrowRight size={14} className="transition-transform group-hover:translate-x-1" />
+                  Open <ArrowRight size={14} className="transition-transform group-hover:translate-x-1.5" />
                 </div>
               </button>
             ))}
