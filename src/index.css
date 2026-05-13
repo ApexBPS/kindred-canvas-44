@@ -221,10 +221,110 @@
   }
 }
 
+@layer components {
+  /* Premium gradient hairline border around glass cards */
+  .glass-bordered {
+    position: relative;
+  }
+  .glass-bordered::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    padding: 1px;
+    background: linear-gradient(135deg,
+      hsl(42 81% 85% / 0.55),
+      hsl(213 53% 88% / 0.15) 35%,
+      hsl(213 53% 88% / 0.05) 60%,
+      hsl(32 60% 80% / 0.45));
+    -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+            mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+            mask-composite: exclude;
+    pointer-events: none;
+    opacity: 0.85;
+    transition: opacity 0.5s var(--transition-smooth);
+  }
+  .glass-bordered:hover::before { opacity: 1; }
+
+  /* Soft inner highlight for premium cards */
+  .card-premium {
+    position: relative;
+    overflow: hidden;
+    isolation: isolate;
+    transition: transform 0.6s var(--transition-smooth), box-shadow 0.6s var(--transition-smooth);
+  }
+  .card-premium::after {
+    content: "";
+    position: absolute;
+    inset: -40% -40% auto auto;
+    width: 80%;
+    height: 80%;
+    background: radial-gradient(closest-side, hsl(42 90% 85% / 0.18), transparent 70%);
+    pointer-events: none;
+    z-index: -1;
+    opacity: 0;
+    transition: opacity 0.6s var(--transition-smooth);
+  }
+  .card-premium:hover::after { opacity: 1; }
+  .card-premium:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 30px 60px -25px hsl(220 60% 4% / 0.55), 0 0 50px hsl(42 81% 75% / 0.18);
+  }
+
+  /* Premium CTA with sheen sweep */
+  .btn-sheen {
+    position: relative;
+    overflow: hidden;
+    isolation: isolate;
+  }
+  .btn-sheen::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(120deg,
+      transparent 30%,
+      hsl(0 0% 100% / 0.45) 50%,
+      transparent 70%);
+    transform: translateX(-120%);
+    transition: transform 0.9s var(--transition-smooth);
+    pointer-events: none;
+  }
+  .btn-sheen:hover::before { transform: translateX(120%); }
+
+  /* Floating gradient blob */
+  .blob {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(60px);
+    opacity: 0.55;
+    pointer-events: none;
+    animation: blob-float 16s ease-in-out infinite;
+    will-change: transform;
+  }
+  @keyframes blob-float {
+    0%, 100% { transform: translate(0, 0) scale(1); }
+    33%      { transform: translate(4%, -3%) scale(1.08); }
+    66%      { transform: translate(-3%, 4%) scale(0.96); }
+  }
+
+  /* Shimmering divider */
+  .divider-shine {
+    height: 1px;
+    background: linear-gradient(90deg, transparent, hsl(42 81% 85% / 0.55), hsl(213 53% 88% / 0.55), transparent);
+    background-size: 200% 100%;
+    animation: shine 6s linear infinite;
+  }
+}
+
 @layer utilities {
   .transition-smooth { transition: all 0.5s var(--transition-smooth); }
   .shadow-glow { box-shadow: var(--shadow-glow); }
   .shadow-soft { box-shadow: var(--shadow-soft); }
+
+  /* Scroll-reveal: starts hidden, fades in when .in-view added */
+  .reveal { opacity: 0; transform: translateY(22px); transition: opacity 0.9s var(--transition-smooth), transform 0.9s var(--transition-smooth); }
+  .reveal.in-view { opacity: 1; transform: translateY(0); }
   .font-garamond { font-family: 'EB Garamond', serif; }
   .font-playfair { font-family: 'Playfair Display', serif; }
   .font-crave { font-family: 'Italianno', cursive; letter-spacing: 0.01em; }

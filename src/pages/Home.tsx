@@ -10,6 +10,7 @@ import {
 } from "lucide-react";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
+import { useReveal } from "@/hooks/use-reveal";
 
 const cards = [
   { id: "card-about", to: "/about", icon: Info, title: "About", desc: "What Apex BPS is, and why it exists." },
@@ -22,6 +23,7 @@ const cards = [
 
 const Home = () => {
   const navigate = useNavigate();
+  useReveal();
 
   const handleApply = () => {
     navigate("/roles");
@@ -32,8 +34,14 @@ const Home = () => {
       <Navbar />
 
       {/* Hero */}
-      <section className="relative min-h-[92vh] flex items-center justify-center px-6 pt-32 pb-20">
-        <div className="max-w-4xl mx-auto text-center">
+      <section className="relative min-h-[92vh] flex items-center justify-center px-6 pt-32 pb-20 overflow-hidden">
+        {/* Floating gradient blobs */}
+        <div aria-hidden className="absolute inset-0 pointer-events-none">
+          <div className="blob" style={{ width: 420, height: 420, top: "8%", left: "-6%", background: "radial-gradient(circle at 30% 30%, hsl(42 90% 75% / 0.55), transparent 70%)" }} />
+          <div className="blob" style={{ width: 520, height: 520, top: "20%", right: "-10%", background: "radial-gradient(circle at 60% 40%, hsl(213 80% 70% / 0.45), transparent 70%)", animationDelay: "-6s" }} />
+          <div className="blob" style={{ width: 360, height: 360, bottom: "-8%", left: "30%", background: "radial-gradient(circle at 50% 50%, hsl(32 80% 70% / 0.40), transparent 70%)", animationDelay: "-10s" }} />
+        </div>
+        <div className="max-w-4xl mx-auto text-center relative">
           <p className="font-garamond uppercase tracking-[0.45em] text-xs md:text-sm text-foreground/85 mb-8 animate-fade-in">
             Where ideas meet their apex
           </p>
@@ -67,15 +75,16 @@ const Home = () => {
           >
             <button
               onClick={handleApply}
-              className="font-garamond text-base inline-flex items-center gap-2 px-8 py-3.5 rounded-full bg-gradient-warm text-primary-foreground font-medium shadow-glow transition-smooth hover:scale-[1.02]"
+              className="btn-sheen font-garamond text-base inline-flex items-center gap-2 px-8 py-3.5 rounded-full bg-gradient-warm text-primary-foreground font-medium shadow-glow transition-smooth hover:scale-[1.03] hover:shadow-[0_0_60px_hsl(42_81%_75%/0.55)]"
             >
               Apply now
+              <ArrowRight size={16} className="transition-transform group-hover:translate-x-1" />
             </button>
             <button
               onClick={() => {
                 document.getElementById("explore-cards")?.scrollIntoView({ behavior: "smooth", block: "start" });
               }}
-              className="font-garamond text-base inline-flex items-center gap-2 px-8 py-3.5 rounded-full glass text-foreground transition-smooth hover:bg-white/15"
+              className="font-garamond text-base inline-flex items-center gap-2 px-8 py-3.5 rounded-full glass glass-bordered text-foreground transition-smooth hover:bg-white/15 hover:scale-[1.02]"
             >
               Learn more
             </button>
@@ -108,7 +117,8 @@ const Home = () => {
       {/* Explore grid */}
       <section id="explore-cards" className="px-6 py-20 scroll-mt-32">
         <div className="max-w-6xl mx-auto">
-          <div className="flex items-end justify-between mb-12 flex-wrap gap-4">
+          <div className="divider-shine mb-16 max-w-md mx-auto" aria-hidden />
+          <div className="flex items-end justify-between mb-12 flex-wrap gap-4 reveal">
             <div>
               <p className="font-garamond text-xs uppercase tracking-[0.3em] text-accent mb-3">Explore</p>
               <h2 className="font-playfair text-4xl md:text-6xl text-gradient">Where to begin</h2>
@@ -121,16 +131,17 @@ const Home = () => {
                 key={c.to}
                 id={c.id}
                 onClick={() => navigate(c.to)}
-                className="card-pulse-target group glass rounded-3xl p-7 text-left transition-smooth hover:bg-white/15 hover:-translate-y-1 animate-fade-in"
-                style={{ animationDelay: `${i * 0.07}s` }}
+                className="card-pulse-target card-premium glass glass-bordered group rounded-3xl p-7 text-left reveal"
+                style={{ transitionDelay: `${i * 60}ms` }}
               >
-                <div className="w-12 h-12 rounded-2xl bg-gradient-warm flex items-center justify-center mb-6 shadow-glow">
+                <div className="relative w-12 h-12 rounded-2xl bg-gradient-warm flex items-center justify-center mb-6 shadow-glow transition-transform duration-500 group-hover:scale-110 group-hover:rotate-[-4deg]">
                   <c.icon size={20} className="text-primary-foreground" />
+                  <span aria-hidden className="absolute inset-0 rounded-2xl ring-1 ring-white/30" />
                 </div>
                 <h3 className="font-playfair text-2xl mb-2">{c.title}</h3>
                 <p className="font-garamond text-sm text-foreground/75 mb-6">{c.desc}</p>
                 <div className="font-garamond inline-flex items-center gap-2 text-sm text-accent">
-                  Open <ArrowRight size={14} className="transition-transform group-hover:translate-x-1" />
+                  Open <ArrowRight size={14} className="transition-transform group-hover:translate-x-1.5" />
                 </div>
               </button>
             ))}
