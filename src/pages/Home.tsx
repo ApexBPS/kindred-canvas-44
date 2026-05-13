@@ -10,6 +10,7 @@ import {
 } from "lucide-react";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
+import { useReveal } from "@/hooks/use-reveal";
 
 const cards = [
   { id: "card-about", to: "/about", icon: Info, title: "About", desc: "What Apex BPS is, and why it exists." },
