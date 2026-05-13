@@ -3,6 +3,7 @@ import { ArrowDown } from "lucide-react";
 import { Navbar } from "@/components/layout/Navbar";
 import { BackButton } from "@/components/layout/BackButton";
 import { Footer } from "@/components/layout/Footer";
+import { useReveal } from "@/hooks/use-reveal";
 
 const preEvent = [
   {
@@ -47,15 +48,15 @@ const Timeline = ({ items }: { items: { n: string; t: string; d: string }[] }) =
       {items.map((s, i) => (
         <div
           key={s.n}
-          className="relative pl-16 md:pl-24 animate-fade-in"
-          style={{ animationDelay: `${i * 0.08}s` }}
+          className="relative pl-16 md:pl-24 reveal"
+          style={{ transitionDelay: `${i * 80}ms` }}
         >
           <div className="absolute left-0 md:left-1 top-2 flex items-center gap-3">
             <div className="w-12 md:w-14 h-12 md:h-14 rounded-2xl glass-strong flex items-center justify-center font-playfair text-foreground/90 text-sm md:text-base text-center leading-tight px-1">
               {s.n}
             </div>
           </div>
-          <div className="glass rounded-3xl p-7 transition-smooth hover:bg-white/15">
+          <div className="glass glass-bordered card-premium rounded-3xl p-7">
             <h3 className="font-playfair text-2xl md:text-3xl text-foreground">{s.t}</h3>
             <div className="gradient-line mt-3 mb-4 max-w-[60%]" />
             <p className="font-garamond text-base text-foreground/85 leading-relaxed">{s.d}</p>
@@ -68,13 +69,14 @@ const Timeline = ({ items }: { items: { n: string; t: string; d: string }[] }) =
 
 const Procedure = () => {
   const stepsRef = useRef<HTMLDivElement>(null);
+  useReveal();
   return (
     <div className="min-h-dvh">
       <Navbar />
       <BackButton />
       <main className="pt-32 px-6">
         {/* Section 1 - left aligned */}
-        <section className="max-w-5xl mx-auto animate-fade-in">
+        <section className="max-w-5xl mx-auto reveal">
           <h1
             className="font-playfair text-gradient leading-[1.05]"
             style={{ fontSize: "clamp(2.8rem, 6.5vw, 5.5rem)" }}
@@ -95,7 +97,7 @@ const Procedure = () => {
         </section>
 
         {/* Section 2 - Pre-Event */}
-        <section ref={stepsRef} className="mt-32">
+        <section ref={stepsRef} className="mt-32 reveal">
           <div className="max-w-5xl mx-auto mb-10">
             <p className="font-garamond uppercase tracking-[0.3em] text-xs text-accent mb-3">Phase one</p>
             <h2
@@ -109,7 +111,7 @@ const Procedure = () => {
         </section>
 
         {/* Section 3 - In-Event */}
-        <section className="mt-32 mb-10">
+        <section className="mt-32 mb-10 reveal">
           <div className="max-w-5xl mx-auto mb-10">
             <p className="font-garamond uppercase tracking-[0.3em] text-xs text-accent mb-3">Phase two</p>
             <h2
