@@ -23,6 +23,7 @@ const cards = [
 
 const Home = () => {
   const navigate = useNavigate();
+  useReveal();
 
   const handleApply = () => {
     navigate("/roles");
@@ -33,8 +34,14 @@ const Home = () => {
       <Navbar />
 
       {/* Hero */}
-      <section className="relative min-h-[92vh] flex items-center justify-center px-6 pt-32 pb-20">
-        <div className="max-w-4xl mx-auto text-center">
+      <section className="relative min-h-[92vh] flex items-center justify-center px-6 pt-32 pb-20 overflow-hidden">
+        {/* Floating gradient blobs */}
+        <div aria-hidden className="absolute inset-0 pointer-events-none">
+          <div className="blob" style={{ width: 420, height: 420, top: "8%", left: "-6%", background: "radial-gradient(circle at 30% 30%, hsl(42 90% 75% / 0.55), transparent 70%)" }} />
+          <div className="blob" style={{ width: 520, height: 520, top: "20%", right: "-10%", background: "radial-gradient(circle at 60% 40%, hsl(213 80% 70% / 0.45), transparent 70%)", animationDelay: "-6s" }} />
+          <div className="blob" style={{ width: 360, height: 360, bottom: "-8%", left: "30%", background: "radial-gradient(circle at 50% 50%, hsl(32 80% 70% / 0.40), transparent 70%)", animationDelay: "-10s" }} />
+        </div>
+        <div className="max-w-4xl mx-auto text-center relative">
           <p className="font-garamond uppercase tracking-[0.45em] text-xs md:text-sm text-foreground/85 mb-8 animate-fade-in">
             Where ideas meet their apex
           </p>
