@@ -1,5 +1,6 @@
 import { PageShell } from "@/components/layout/PageShell";
 import { Package, UtensilsCrossed, Sparkles } from "lucide-react";
+import { useReveal } from "@/hooks/use-reveal";
 
 const columns = [
   {
@@ -37,7 +38,9 @@ const columns = [
   },
 ];
 
-const Categories = () => (
+const Categories = () => {
+  useReveal();
+  return (
   <PageShell kicker="Disciplines" title="Industries">
     <p className="max-w-2xl mx-auto text-center text-muted-foreground -mt-8 mb-16 font-garamond">
       Three tracks where ideas find their shape — choose the one that fits your vision.
@@ -47,8 +50,8 @@ const Categories = () => (
       {columns.map((c, i) => (
         <div
           key={c.title}
-          className="glass rounded-3xl p-8 flex flex-col animate-fade-in transition-smooth hover:bg-white/10 hover:-translate-y-1"
-          style={{ animationDelay: `${i * 0.08}s` }}
+          className="glass glass-bordered card-premium rounded-3xl p-8 flex flex-col reveal"
+          style={{ transitionDelay: `${i * 80}ms` }}
         >
           <div className={`w-14 h-14 rounded-2xl ${c.grad} flex items-center justify-center mb-6 shadow-glow`}>
             <c.icon size={22} className="text-primary-foreground" />
@@ -71,6 +74,7 @@ const Categories = () => (
       ))}
     </div>
   </PageShell>
-);
+  );
+};
 
 export default Categories;

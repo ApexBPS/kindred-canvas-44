@@ -87,31 +87,16 @@
     min-height: 100dvh;
   }
 
-  /* Stable animated gradient bg — fixed so it doesn't scroll with content */
+  /* Static fallback gradient — visible only if WebGL canvas fails to mount */
   body::before {
     content: "";
     position: fixed;
-    inset: -25%;
-    z-index: -2;
+    inset: 0;
+    z-index: -20;
     background: var(--gradient-bg);
     background-size: 260% 260%;
     animation: bg-shift 18s ease-in-out infinite;
     filter: saturate(115%);
-  }
-  body::after {
-    content: "";
-    position: fixed;
-    inset: -10%;
-    z-index: -1;
-    pointer-events: none;
-    background:
-      radial-gradient(900px 600px at 20% 15%, hsl(213 80% 70% / 0.28), transparent 60%),
-      radial-gradient(800px 600px at 85% 25%, hsl(32 80% 65% / 0.26), transparent 60%),
-      radial-gradient(900px 700px at 75% 85%, hsl(280 60% 60% / 0.22), transparent 65%),
-      radial-gradient(700px 600px at 15% 90%, hsl(180 60% 55% / 0.18), transparent 60%),
-      radial-gradient(1100px 800px at 50% 50%, hsl(42 81% 75% / 0.16), transparent 65%);
-    animation: aurora-drift 22s ease-in-out infinite;
-    filter: blur(2px);
   }
 
   @keyframes bg-shift {

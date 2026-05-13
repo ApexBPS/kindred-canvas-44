@@ -3,6 +3,7 @@ import { ArrowRight } from "lucide-react";
 import { Navbar } from "@/components/layout/Navbar";
 import { BackButton } from "@/components/layout/BackButton";
 import { Footer } from "@/components/layout/Footer";
+import { useReveal } from "@/hooks/use-reveal";
 
 type Role = {
   title: string;

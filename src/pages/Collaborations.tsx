@@ -1,5 +1,6 @@
 import { useState, CSSProperties } from "react";
 import { PageShell } from "@/components/layout/PageShell";
+import { useReveal } from "@/hooks/use-reveal";
 import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog";
 import vocLogo from "@/assets/voc-debate.png";
 import ylLogo from "@/assets/youthlinker.png";
@@ -95,8 +96,8 @@ const EntryCard = ({
   if (entry.placeholder) {
     return (
       <div
-        className="relative rounded-3xl p-7 glass border border-dashed border-white/15 bg-white/[0.03] flex items-center justify-center min-h-[160px] animate-fade-in"
-        style={{ animationDelay: `${i * 0.06}s` }}
+        className="relative rounded-3xl p-7 glass glass-bordered border border-dashed border-white/15 bg-white/[0.03] flex items-center justify-center min-h-[160px] reveal"
+        style={{ transitionDelay: `${i * 60}ms` }}
       >
         <span className="font-playfair text-xl text-muted-foreground/70 italic">
           {entry.name}
@@ -106,8 +107,8 @@ const EntryCard = ({
   }
   return (
     <div
-      className="relative rounded-3xl p-6 transition-smooth animate-fade-in flex flex-col glass border hover:bg-white/10"
-      style={{ animationDelay: `${i * 0.06}s`, ...tintStyle(entry.tint) }}
+      className="relative rounded-3xl p-6 card-premium reveal flex flex-col glass glass-bordered border"
+      style={{ transitionDelay: `${i * 60}ms`, ...tintStyle(entry.tint) }}
     >
       <div className="flex items-center gap-4">
         {entry.logo && (
@@ -161,6 +162,7 @@ const Section = ({
 
 const Collaborations = () => {
   const [active, setActive] = useState<Entry | null>(null);
+  useReveal();
 
   return (
     <PageShell kicker="Together" title="Collaborations">
