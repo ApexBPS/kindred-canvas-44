@@ -121,6 +121,7 @@ const Section = ({
 
 const Collaborations = () => {
   const [active, setActive] = useState<Entry | null>(null);
+  const [contactOpen, setContactOpen] = useState(false);
 
   return (
     <PageShell kicker="Together" title="Collaborations">
@@ -128,9 +129,56 @@ const Collaborations = () => {
         The panelists and partners shaping the Apex experience.
       </p>
 
-      <Section id="panelists" title="Panelists" items={panelists} onDetails={setActive} />
+      <Section id="panelists" title="Panelists" items={panelists} onDetails={setActive} wide />
+      <p className="max-w-2xl mx-auto text-center text-sm text-muted-foreground -mt-12 mb-20 font-garamond">
+        Are you a member of a business/organization and are interested?{" "}
+        <button
+          onClick={() => setContactOpen(true)}
+          className="underline underline-offset-4 text-accent transition-smooth"
+          style={{ textShadow: "0 0 12px hsl(42 81% 65% / 0.7)" }}
+        >
+          Contact us
+        </button>
+        .
+      </p>
       <Section title="Sponsors" items={sponsors} onDetails={setActive} wide />
       <Section title="Attendees" items={attendees} onDetails={setActive} wide />
+
+      <Dialog open={contactOpen} onOpenChange={setContactOpen}>
+        <DialogContent className="max-w-md backdrop-blur-xl shadow-2xl border bg-background/70">
+          <DialogTitle className="font-playfair text-4xl text-gradient text-center">
+            Contact Us
+          </DialogTitle>
+          <div className="gradient-line max-w-[6rem] mx-auto" />
+          <div className="flex flex-col gap-4 mt-4 font-garamond text-lg">
+            <a
+              href="https://wa.me/966508767377"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group flex items-center gap-3 text-foreground/90 hover:text-accent transition-smooth"
+            >
+              <Phone size={20} className="shrink-0 transition-transform group-hover:scale-110" />
+              <span>+966 508 767 377</span>
+            </a>
+            <a
+              href="mailto:apexbusinesspitchsummit@gmail.com"
+              className="group flex items-center gap-3 text-foreground/90 hover:text-accent transition-smooth break-all"
+            >
+              <Mail size={20} className="shrink-0 transition-transform group-hover:scale-110" />
+              <span>apexbusinesspitchsummit@gmail.com</span>
+            </a>
+            <a
+              href="https://www.instagram.com/apex.bps/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group flex items-center gap-3 text-foreground/90 hover:text-accent transition-smooth"
+            >
+              <Instagram size={20} className="shrink-0 transition-transform group-hover:scale-110" />
+              <span>apex.bps</span>
+            </a>
+          </div>
+        </DialogContent>
+      </Dialog>
 
       <Dialog open={!!active} onOpenChange={(o) => !o && setActive(null)}>
         <DialogContent
