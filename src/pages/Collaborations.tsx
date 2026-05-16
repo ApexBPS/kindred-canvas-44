@@ -1,11 +1,7 @@
 import { useState, CSSProperties } from "react";
 import { PageShell } from "@/components/layout/PageShell";
 import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog";
-import vocLogo from "@/assets/voc-debate.png";
-import ylLogo from "@/assets/youthlinker.png";
-import yashLogo from "@/assets/yash-club.png";
-import vrLogo from "@/assets/velours-rouge.png";
-import serosLogo from "@/assets/seros-sweets.png";
+import { Phone, Mail, Instagram } from "lucide-react";
 
 type Entry = {
   name: string;
@@ -16,43 +12,7 @@ type Entry = {
   placeholder?: boolean;
 };
 
-const panelists: Entry[] = [
-  {
-    name: "Voices of Change Debate Club",
-    logo: vocLogo,
-    tint: "0 70% 45%",
-    details:
-      "VOC will be joining Apex Business Pitch Summit as panelists for the Services & Experiences industry, offering insights, feedback, and perspective to support and elevate participating ideas.",
-  },
-  {
-    name: "Youthlinker",
-    logo: ylLogo,
-    tint: "213 85% 55%",
-    details:
-      "Youthlinker joins Apex Business Pitch Summit as panelists for the Services & Experiences industry, delivering sharp insights and constructive feedback to help refine and elevate participants’ ideas.",
-  },
-  {
-    name: "Yash Club",
-    logo: yashLogo,
-    tint: "265 55% 70%",
-    details:
-      "Yash Club joins Apex Business Pitch Summit as panelists for the Physical Products industry, offering practical insights and constructive feedback to help shape and strengthen participants’ ideas.",
-  },
-  {
-    name: "Velours Rouge",
-    logo: vrLogo,
-    tint: "350 70% 70%",
-    details:
-      "Velours Rouge joins Apex Business Pitch Summit as panelists for the Culinary industry, bringing refined perspectives and thoughtful feedback to elevate participants’ concepts.",
-  },
-  {
-    name: "Serossweets",
-    logo: serosLogo,
-    tint: "25 55% 40%",
-    details:
-      "Serossweets joins Apex Business Pitch Summit as panelists for the Culinary industry, providing valuable insights and guidance to help refine and enhance participants’ ideas.",
-  },
-];
+const panelists: Entry[] = [{ name: "Coming soon", placeholder: true }];
 
 const sponsors: Entry[] = [{ name: "Coming soon", placeholder: true }];
 const attendees: Entry[] = [{ name: "Coming soon", placeholder: true }];
@@ -161,6 +121,7 @@ const Section = ({
 
 const Collaborations = () => {
   const [active, setActive] = useState<Entry | null>(null);
+  const [contactOpen, setContactOpen] = useState(false);
 
   return (
     <PageShell kicker="Together" title="Collaborations">
@@ -168,9 +129,56 @@ const Collaborations = () => {
         The panelists and partners shaping the Apex experience.
       </p>
 
-      <Section id="panelists" title="Panelists" items={panelists} onDetails={setActive} />
+      <Section id="panelists" title="Panelists" items={panelists} onDetails={setActive} wide />
+      <p className="max-w-2xl mx-auto text-center text-sm text-muted-foreground -mt-12 mb-20 font-garamond">
+        Are you a member of a business/organization and are interested?{" "}
+        <button
+          onClick={() => setContactOpen(true)}
+          className="underline underline-offset-4 text-accent transition-smooth"
+          style={{ textShadow: "0 0 12px hsl(42 81% 65% / 0.7)" }}
+        >
+          Contact us
+        </button>
+        .
+      </p>
       <Section title="Sponsors" items={sponsors} onDetails={setActive} wide />
       <Section title="Attendees" items={attendees} onDetails={setActive} wide />
+
+      <Dialog open={contactOpen} onOpenChange={setContactOpen}>
+        <DialogContent className="max-w-md backdrop-blur-xl shadow-2xl border bg-background/70">
+          <DialogTitle className="font-playfair text-4xl text-gradient text-center">
+            Contact Us
+          </DialogTitle>
+          <div className="gradient-line max-w-[6rem] mx-auto" />
+          <div className="flex flex-col gap-4 mt-4 font-garamond text-lg">
+            <a
+              href="https://wa.me/966508767377"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group flex items-center gap-3 text-foreground/90 hover:text-accent transition-smooth"
+            >
+              <Phone size={20} className="shrink-0 transition-transform group-hover:scale-110" />
+              <span>+966 508 767 377</span>
+            </a>
+            <a
+              href="mailto:apexbusinesspitchsummit@gmail.com"
+              className="group flex items-center gap-3 text-foreground/90 hover:text-accent transition-smooth break-all"
+            >
+              <Mail size={20} className="shrink-0 transition-transform group-hover:scale-110" />
+              <span>apexbusinesspitchsummit@gmail.com</span>
+            </a>
+            <a
+              href="https://www.instagram.com/apex.bps/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group flex items-center gap-3 text-foreground/90 hover:text-accent transition-smooth"
+            >
+              <Instagram size={20} className="shrink-0 transition-transform group-hover:scale-110" />
+              <span>apex.bps</span>
+            </a>
+          </div>
+        </DialogContent>
+      </Dialog>
 
       <Dialog open={!!active} onOpenChange={(o) => !o && setActive(null)}>
         <DialogContent
