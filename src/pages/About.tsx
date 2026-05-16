@@ -58,6 +58,7 @@ const About = () => {
     </main>
     <Footer />
   </div>
-);
+  );
+};
 
 export default About;
