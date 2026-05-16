@@ -47,8 +47,8 @@ const Categories = () => (
       {columns.map((c, i) => (
         <div
           key={c.title}
-          className="glass rounded-3xl p-8 flex flex-col animate-fade-in transition-smooth hover:bg-white/10 hover:-translate-y-1"
-          style={{ animationDelay: `${i * 0.08}s` }}
+          className="glass glass-bordered card-premium reveal rounded-3xl p-8 flex flex-col transition-smooth hover:bg-white/10"
+          style={{ transitionDelay: `${i * 80}ms` }}
         >
           <div className={`w-14 h-14 rounded-2xl ${c.grad} flex items-center justify-center mb-6 shadow-glow`}>
             <c.icon size={22} className="text-primary-foreground" />

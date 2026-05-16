@@ -3,6 +3,7 @@ import { ArrowRight } from "lucide-react";
 import { Navbar } from "@/components/layout/Navbar";
 import { BackButton } from "@/components/layout/BackButton";
 import { Footer } from "@/components/layout/Footer";
+import { useReveal } from "@/hooks/use-reveal";
 
 type Role = {
   title: string;
@@ -17,7 +18,7 @@ const roles: Role[] = [
     cta: { label: "Apply Now", disabled: true },
   },
   {
-    title: "Adjudicators",
+    title: "Evaluators",
     desc: "Leads responsible for guiding candidates throughout the event. They provide feedback, ensure progress, and assess projects using the official scoring system.",
     cta: { label: "Apply Now", disabled: true },
   },
@@ -51,7 +52,9 @@ const ctaDimmed =
 const ctaGlow =
   "text-[hsl(40_75%_70%)] hover:text-[hsl(40_90%_80%)] [text-shadow:0_0_10px_hsl(40_85%_65%/0.7)]";
 
-const Roles = () => (
+const Roles = () => {
+  useReveal();
+  return (
   <div className="min-h-dvh">
     <Navbar />
     <BackButton />
@@ -75,8 +78,8 @@ const Roles = () => (
             return (
               <article
                 key={r.title}
-                className="relative glass rounded-3xl p-7 pt-12 transition-smooth hover:bg-white/15 animate-fade-in"
-                style={{ animationDelay: `${i * 0.06}s` }}
+                className="relative glass glass-bordered card-premium rounded-3xl p-7 pt-12 transition-smooth hover:bg-white/15 reveal"
+                style={{ transitionDelay: `${i * 70}ms` }}
               >
                 <div className="absolute top-4 right-5">
                   {r.cta.to ? <Link to={r.cta.to}>{cta}</Link> : cta}
@@ -92,6 +95,7 @@ const Roles = () => (
     </main>
     <Footer />
   </div>
-);
+  );
+};
 
 export default Roles;
