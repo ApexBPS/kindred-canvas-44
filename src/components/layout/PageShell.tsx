@@ -2,6 +2,7 @@ import { ReactNode } from "react";
 import { Navbar } from "./Navbar";
 import { Footer } from "./Footer";
 import { BackButton } from "./BackButton";
+import { useReveal } from "@/hooks/use-reveal";
 
 export const PageShell = ({
   children,
@@ -19,6 +20,7 @@ export const PageShell = ({
   const alignCls = align === "left" ? "text-left" : "text-center";
   const fontCls =
     titleFont === "crave" ? "font-playfair" : titleFont === "garamond" ? "font-garamond" : "font-playfair";
+  useReveal();
   return (
     <div className="min-h-dvh relative">
       <Navbar />
