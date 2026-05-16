@@ -3,6 +3,7 @@ import { ArrowDown } from "lucide-react";
 import { Navbar } from "@/components/layout/Navbar";
 import { BackButton } from "@/components/layout/BackButton";
 import { Footer } from "@/components/layout/Footer";
+import { useReveal } from "@/hooks/use-reveal";
 
 const preEvent = [
   {
@@ -47,8 +48,8 @@ const Timeline = ({ items }: { items: { n: string; t: string; d: string }[] }) =
       {items.map((s, i) => (
         <div
           key={s.n}
-          className="relative pl-16 md:pl-24 animate-fade-in"
-          style={{ animationDelay: `${i * 0.08}s` }}
+          className="relative pl-16 md:pl-24 reveal"
+          style={{ transitionDelay: `${i * 80}ms` }}
         >
           <div className="absolute left-0 md:left-1 top-2 flex items-center gap-3">
             <div className="w-12 md:w-14 h-12 md:h-14 rounded-2xl glass-strong flex items-center justify-center font-playfair text-foreground/90 text-sm md:text-base text-center leading-tight px-1">
@@ -68,6 +69,7 @@ const Timeline = ({ items }: { items: { n: string; t: string; d: string }[] }) =
 
 const Procedure = () => {
   const stepsRef = useRef<HTMLDivElement>(null);
+  useReveal();
   return (
     <div className="min-h-dvh">
       <Navbar />
