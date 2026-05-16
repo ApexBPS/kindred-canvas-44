@@ -26,17 +26,17 @@ const inEvent = [
   {
     n: "Day 01",
     t: "Introduction",
-    d: "Opening ceremony takes place, directorate give speeches and recap guidelines. Each candidate goes to their category's designated room and start introductions, meeting the adjudicators and the other candidates is crucial for the environment to grow. Candidates ask, adjudicators answer.",
+    d: "Opening ceremony takes place, directorate give speeches and recap guidelines. Each candidate goes to their category's designated room and start introductions, meeting the evaluators and the other candidates is crucial for the environment to grow. Candidates ask, evaluators answer.",
   },
   {
     n: "Day 02",
     t: "Proposal Speeches",
-    d: "Candidates present brief speeches showcasing how their idea has value, benefit, and creativity. Adjudicators get to understand the ideas more and start scoring using the official scoring system. Other candidates may ask questions as well. Copying and plagiarism are EXTREMELY prohibited as all ideas must be original, however taking inspiration or collaborating with other candidates is allowed (3 candidates per collaboration maximum).",
+    d: "Candidates present brief speeches showcasing how their idea has value, benefit, and creativity. Evaluators get to understand the ideas more and start scoring using the official scoring system. Other candidates may ask questions as well. Copying and plagiarism are EXTREMELY prohibited as all ideas must be original, however taking inspiration or collaborating with other candidates is allowed (3 candidates per collaboration maximum).",
   },
   {
     n: "Day 03",
     t: "Final Presentation & Marketing Scheme",
-    d: "Candidates develop fully detailed pitches and present a marketing scheme for their idea, they could market using anything, whether it was making flyers or printing their logo on a t-shirt. Adjudicators finalize the winners and submit them to the directorate, during the closing ceremony awards will be handed out, and may the best idea reach its Apex.",
+    d: "Candidates develop fully detailed pitches and present a marketing scheme for their idea, they could market using anything, whether it was making flyers or printing their logo on a t-shirt. Evaluators finalize the winners and submit them to the directorate, during the closing ceremony awards will be handed out, and may the best idea reach its Apex.",
   },
 ];
 

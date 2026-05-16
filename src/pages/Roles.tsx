@@ -17,7 +17,7 @@ const roles: Role[] = [
     cta: { label: "Apply Now", disabled: true },
   },
   {
-    title: "Adjudicators",
+    title: "Evaluators",
     desc: "Leads responsible for guiding candidates throughout the event. They provide feedback, ensure progress, and assess projects using the official scoring system.",
     cta: { label: "Apply Now", disabled: true },
   },
