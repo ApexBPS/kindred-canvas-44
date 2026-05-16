@@ -95,6 +95,7 @@ const Roles = () => {
     </main>
     <Footer />
   </div>
-);
+  );
+};
 
 export default Roles;
