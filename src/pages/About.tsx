@@ -20,12 +20,14 @@ const About = () => (
           <p>
             Apex BPS (Business Pitch Summit) is a distinguished student-led business event designed to
             support young innovators by providing a professional platform to present their pre-prepared
-            business ideas and entrepreneurial visions. It brings together AMBITIOUS students who are
+            business ideas and entrepreneurial visions. It brings together <em className="italic">AMBITIOUS</em> students who are
             passionate about leadership, strategy, and innovation, allowing them to showcase not only
             their concepts but also their understanding of what it takes to build and sustain a
             successful business. Participants are challenged to demonstrate creativity, practicality,
             financial awareness, and strong presentation skills while defending the value and feasibility
-            of their ideas before experienced evaluators and industry-aware mentors.
+            of their ideas before experienced evaluators, student experts, and industry-aware mentors.
+            Candidates pitch their ideas in order to receive constructive guidance and professional
+            feedback that can help refine, strengthen, and improve their business concepts overall.
           </p>
           <p>
             More than just an event, Apex BPS serves as an environment that encourages confidence,
@@ -34,7 +36,7 @@ const About = () => (
             constructive feedback, and high-level discussion. Through this experience, participants
             develop a stronger entrepreneurial mindset, refine their communication abilities, and gain
             valuable recognition for their innovation and dedication. Apex BPS stands as a symbol of
-            ambition, excellence, and the belief that student ideas have the power to create REAL impact.
+            ambition, excellence, and the belief that student ideas have the power to create <em className="italic">REAL</em> impact.
           </p>
         </div>
       </section>
