@@ -12,43 +12,7 @@ type Entry = {
   placeholder?: boolean;
 };
 
-const panelists: Entry[] = [
-  {
-    name: "Voices of Change Debate Club",
-    logo: vocLogo,
-    tint: "0 70% 45%",
-    details:
-      "VOC will be joining Apex Business Pitch Summit as panelists for the Services & Experiences industry, offering insights, feedback, and perspective to support and elevate participating ideas.",
-  },
-  {
-    name: "Youthlinker",
-    logo: ylLogo,
-    tint: "213 85% 55%",
-    details:
-      "Youthlinker joins Apex Business Pitch Summit as panelists for the Services & Experiences industry, delivering sharp insights and constructive feedback to help refine and elevate participants’ ideas.",
-  },
-  {
-    name: "Yash Club",
-    logo: yashLogo,
-    tint: "265 55% 70%",
-    details:
-      "Yash Club joins Apex Business Pitch Summit as panelists for the Physical Products industry, offering practical insights and constructive feedback to help shape and strengthen participants’ ideas.",
-  },
-  {
-    name: "Velours Rouge",
-    logo: vrLogo,
-    tint: "350 70% 70%",
-    details:
-      "Velours Rouge joins Apex Business Pitch Summit as panelists for the Culinary industry, bringing refined perspectives and thoughtful feedback to elevate participants’ concepts.",
-  },
-  {
-    name: "Serossweets",
-    logo: serosLogo,
-    tint: "25 55% 40%",
-    details:
-      "Serossweets joins Apex Business Pitch Summit as panelists for the Culinary industry, providing valuable insights and guidance to help refine and enhance participants’ ideas.",
-  },
-];
+const panelists: Entry[] = [{ name: "Coming soon", placeholder: true }];
 
 const sponsors: Entry[] = [{ name: "Coming soon", placeholder: true }];
 const attendees: Entry[] = [{ name: "Coming soon", placeholder: true }];
