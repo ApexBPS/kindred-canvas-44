@@ -1,11 +1,7 @@
 import { useState, CSSProperties } from "react";
 import { PageShell } from "@/components/layout/PageShell";
 import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog";
-import vocLogo from "@/assets/voc-debate.png";
-import ylLogo from "@/assets/youthlinker.png";
-import yashLogo from "@/assets/yash-club.png";
-import vrLogo from "@/assets/velours-rouge.png";
-import serosLogo from "@/assets/seros-sweets.png";
+import { Phone, Mail, Instagram } from "lucide-react";
 
 type Entry = {
   name: string;
