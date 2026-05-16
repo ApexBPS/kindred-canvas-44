@@ -3,6 +3,7 @@ import { ArrowDown } from "lucide-react";
 import { Navbar } from "@/components/layout/Navbar";
 import { BackButton } from "@/components/layout/BackButton";
 import { Footer } from "@/components/layout/Footer";
+import { useReveal } from "@/hooks/use-reveal";
 
 const members: { name: string; role: string }[] = [
   { name: "Layal Abounaem", role: "Director-General" },
@@ -27,6 +28,7 @@ const members: { name: string; role: string }[] = [
 
 const Team = () => {
   const membersRef = useRef<HTMLDivElement>(null);
+  useReveal();
   return (
     <div className="min-h-dvh">
       <Navbar />
@@ -74,8 +76,8 @@ const Team = () => {
             {members.map((m, i) => (
               <div
                 key={m.name}
-                className="text-center animate-fade-in"
-                style={{ animationDelay: `${i * 0.04}s` }}
+                className="text-center reveal"
+                style={{ transitionDelay: `${i * 40}ms` }}
               >
                 <div className="font-garamond uppercase tracking-[0.06em] text-xl md:text-2xl text-foreground leading-tight">
                   {m.name}

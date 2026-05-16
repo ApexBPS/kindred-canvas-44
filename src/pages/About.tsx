@@ -1,8 +1,11 @@
 import { Navbar } from "@/components/layout/Navbar";
 import { BackButton } from "@/components/layout/BackButton";
 import { Footer } from "@/components/layout/Footer";
+import { useReveal } from "@/hooks/use-reveal";
 
-const About = () => (
+const About = () => {
+  useReveal();
+  return (
   <div className="min-h-dvh">
     <Navbar />
       <BackButton />
