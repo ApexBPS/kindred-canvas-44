@@ -130,17 +130,6 @@ const Collaborations = () => {
       </p>
 
       <Section id="panelists" title="Panelists" items={panelists} onDetails={setActive} wide />
-      <p className="max-w-2xl mx-auto text-center text-sm text-muted-foreground -mt-12 mb-20 font-garamond">
-        Are you a member of a business/organization and are interested?{" "}
-        <button
-          onClick={() => setContactOpen(true)}
-          className="underline underline-offset-4 text-accent transition-smooth"
-          style={{ textShadow: "0 0 12px hsl(42 81% 65% / 0.7)" }}
-        >
-          Contact us
-        </button>
-        .
-      </p>
       <Section title="Sponsors" items={sponsors} onDetails={setActive} wide />
       <Section title="Attendees" items={attendees} onDetails={setActive} wide />
 

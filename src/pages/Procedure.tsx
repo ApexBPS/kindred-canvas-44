@@ -8,8 +8,8 @@ import { useReveal } from "@/hooks/use-reveal";
 const preEvent = [
   {
     n: "01",
-    t: "Category Release",
-    d: "Business categories (e.g., baked goods, digital platforms, apparel, etc.) are officially announced to provide participants with a clear framework for their submissions. This allows students to identify the category that best aligns with their existing business idea or develop a new concept within their preferred field.",
+    t: "Industry Release",
+    d: "Business industries are officially announced to provide participants with a clear framework for their submissions. This allows students to identify the industry that best aligns with their existing business idea or develop a new concept within their preferred field.",
   },
   {
     n: "02",
@@ -27,17 +27,17 @@ const inEvent = [
   {
     n: "Day 01",
     t: "Introduction",
-    d: "Opening ceremony takes place, directorate give speeches and recap guidelines. Each candidate goes to their category's designated room and start introductions, meeting the evaluators and the other candidates is crucial for the environment to grow. Candidates ask, evaluators answer.",
+    d: "The opening ceremony takes place as the directorate delivers speeches and recaps the official guidelines. Each candidate then heads to their designated room to begin introductions. Meeting the panelists and other candidates is essential in building a collaborative and creative environment. Candidates are encouraged to ask questions, while panelists provide guidance, feedback, and support to help candidates refine and strengthen their ideas throughout the event. Evaluators will observe the sessions strictly for scoring purposes using the official judging criteria.",
   },
   {
     n: "Day 02",
     t: "Proposal Speeches",
-    d: "Candidates present brief speeches showcasing how their idea has value, benefit, and creativity. Evaluators get to understand the ideas more and start scoring using the official scoring system. Other candidates may ask questions as well. Copying and plagiarism are EXTREMELY prohibited as all ideas must be original, however taking inspiration or collaborating with other candidates is allowed (3 candidates per collaboration maximum).",
+    d: "Candidates present brief speeches showcasing the value, creativity, and potential impact of their ideas. Panelists engage with candidates by answering questions, providing constructive feedback, and helping participants further develop and improve their concepts. Evaluators continue assessing presentations through the official scoring system only. Candidates may also ask questions and exchange feedback with one another. Copying and plagiarism are EXTREMELY prohibited, as all ideas must remain original. However, inspiration and collaboration between candidates are allowed, with a maximum of 3 candidates per collaboration.",
   },
   {
     n: "Day 03",
-    t: "Final Presentation & Marketing Scheme",
-    d: "Candidates develop fully detailed pitches and present a marketing scheme for their idea, they could market using anything, whether it was making flyers or printing their logo on a t-shirt. Evaluators finalize the winners and submit them to the directorate, during the closing ceremony awards will be handed out, and may the best idea reach its Apex.",
+    t: "Final Presentation",
+    d: "Candidates present their fully refined ideas, demonstrating how they developed their concepts using the guidance and industry-focused feedback provided by the panelists throughout the event. Presentations should reflect strong understanding of the key aspects emphasized within their industry, while maintaining creativity, originality, and practicality. Panelists continue supporting candidates through final feedback and discussion, while evaluators finalize scores and submit the winners to the directorate. During the closing ceremony, awards will be presented — and may the best idea reach its Apex.",
   },
 ];
 

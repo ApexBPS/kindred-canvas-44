@@ -51,7 +51,7 @@ export const Navbar = () => {
         willChange: "transform, opacity",
       }}
     >
-      <nav className="glass rounded-full pl-3 pr-2 py-1.5 sm:py-2 flex items-center gap-2 w-full sm:w-auto pointer-events-auto">
+      <nav className="glass rounded-full pl-3 pr-2 py-1.5 sm:py-2 flex items-center gap-2 w-full sm:w-auto pointer-events-auto bg-background/55 backdrop-blur-2xl">
         <Link
           to="/"
           className="flex items-center gap-2 pr-1 shrink-0"
