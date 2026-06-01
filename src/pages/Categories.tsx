@@ -2,6 +2,9 @@ import { PageShell } from "@/components/layout/PageShell";
 
 const Categories = () => (
   <PageShell title="Industries">
+    <p className="max-w-2xl mx-auto text-center text-sm text-muted-foreground -mt-8 mb-12 font-garamond">
+      Three tracks where ideas find their shape — choose the one that fits your vision.
+    </p>
     <div className="max-w-2xl mx-auto reveal">
       <div className="relative rounded-3xl p-7 glass border border-dashed border-white/15 bg-white/[0.03] flex items-center justify-center min-h-[160px]">
         <span className="font-playfair text-xl text-muted-foreground/70 italic">

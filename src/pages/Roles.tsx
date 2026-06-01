@@ -19,12 +19,12 @@ const roles: Role[] = [
   },
   {
     title: "Evaluators",
-    desc: "Leads responsible for guiding candidates throughout the event. They provide feedback, ensure progress, and assess projects using the official scoring system.",
+    desc: "Participants that assess participant submissions and assign scores based on the criteria and guidelines set by the panelists, ensuring a fair and consistent evaluation process.",
     cta: { label: "Apply Now", disabled: true },
   },
   {
-    title: "Industry Panel",
-    desc: "Industry experts who support the event by offering insight to evaluators and providing guidance during scheduled shifts. They offer professional feedback to candidates but do not take part in final scoring.",
+    title: "Panelists",
+    desc: "Industry experts who provide industry expertise, share valuable insights, and establish the evaluation criteria that guide the candidates. While they help shape the judging standards, they are not involved in scoring candidate submissions.",
     cta: { label: "View More", to: "/collaborations#panelists" },
   },
   {

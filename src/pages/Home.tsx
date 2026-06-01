@@ -1,4 +1,5 @@
-import { useNavigate } from "react-router-dom";
+import { useEffect } from "react";
+import { useNavigate, useLocation } from "react-router-dom";
 import {
   ArrowRight,
   Info,
@@ -23,7 +24,17 @@ const cards = [
 
 const Home = () => {
   const navigate = useNavigate();
+  const location = useLocation();
   useReveal();
+
+  useEffect(() => {
+    const target = (location.state as { scrollTo?: string } | null)?.scrollTo;
+    if (target) {
+      requestAnimationFrame(() => {
+        document.getElementById(target)?.scrollIntoView({ behavior: "smooth", block: "start" });
+      });
+    }
+  }, [location.state]);
 
   const handleApply = () => {
     navigate("/roles");
