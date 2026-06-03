@@ -123,9 +123,6 @@ const Section = ({
 );
 
 const Collaborations = () => {
-  const [contactOpen] = useState(false);
-  const [, setContactOpenState] = useState(false);
-
   return (
     <PageShell kicker="Together" title="Collaborations">
       <p className="max-w-2xl mx-auto text-center text-muted-foreground -mt-8 mb-20 font-garamond px-4">
@@ -141,42 +138,6 @@ const Collaborations = () => {
 
       <Section title="Sponsors" items={sponsors} />
       <Section title="Attendees" items={attendees} />
-
-      <Dialog open={contactOpen} onOpenChange={setContactOpenState}>
-        <DialogContent className="max-w-md backdrop-blur-xl shadow-2xl border bg-background/70">
-          <DialogTitle className="font-playfair text-4xl text-gradient text-center">
-            Contact Us
-          </DialogTitle>
-          <div className="gradient-line max-w-[6rem] mx-auto" />
-          <div className="flex flex-col gap-4 mt-4 font-garamond text-lg">
-            <a
-              href="https://wa.me/966508767377"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="group flex items-center gap-3 text-foreground/90 hover:text-accent transition-smooth"
-            >
-              <Phone size={20} className="shrink-0 transition-transform group-hover:scale-110" />
-              <span>+966 508 767 377</span>
-            </a>
-            <a
-              href="mailto:apexbusinesspitchsummit@gmail.com"
-              className="group flex items-center gap-3 text-foreground/90 hover:text-accent transition-smooth break-all"
-            >
-              <Mail size={20} className="shrink-0 transition-transform group-hover:scale-110" />
-              <span>apexbusinesspitchsummit@gmail.com</span>
-            </a>
-            <a
-              href="https://www.instagram.com/apex.bps/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="group flex items-center gap-3 text-foreground/90 hover:text-accent transition-smooth"
-            >
-              <Instagram size={20} className="shrink-0 transition-transform group-hover:scale-110" />
-              <span>apex.bps</span>
-            </a>
-          </div>
-        </DialogContent>
-      </Dialog>
     </PageShell>
   );
 };
