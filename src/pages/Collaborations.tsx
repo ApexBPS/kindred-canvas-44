@@ -1,40 +1,91 @@
-import { useState, CSSProperties } from "react";
+import { CSSProperties } from "react";
 import { PageShell } from "@/components/layout/PageShell";
-import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog";
-import { Phone, Mail, Instagram } from "lucide-react";
+import { PartnerCarousel, Partner } from "@/components/PartnerCarousel";
+
+
+import vocLogo from "@/assets/partners/voc-debate.png.asset.json";
+import youthLogo from "@/assets/partners/youthlinker.png.asset.json";
+import interimLogo from "@/assets/partners/interim.png.asset.json";
+import serosLogo from "@/assets/partners/seros.png.asset.json";
+import biteLogo from "@/assets/partners/bite.png.asset.json";
+import candyLogo from "@/assets/partners/candyjoy.png.asset.json";
+import yashLogo from "@/assets/partners/yash.png.asset.json";
+import tibianLogo from "@/assets/partners/tibian.png.asset.json";
+import snoozLogo from "@/assets/partners/snoozmnky.png.asset.json";
 
 type Entry = {
   name: string;
-  logo?: string;
-  /** HSL triplet, e.g. "0 70% 45%". When set, tints panel + modal. */
-  tint?: string;
-  details?: string;
   placeholder?: boolean;
 };
 
-const panelists: Entry[] = [{ name: "Coming soon", placeholder: true }];
+const panelists: Partner[] = [
+  {
+    name: "VOC Debate Club",
+    logo: vocLogo.url,
+    tint: "0 65% 32%",
+    description:
+      "VOC is a non-profit organization committed to elevating youth voices in Saudi Arabia, empowering Saudi youth to think critically, speak with confidence, and find their voice, offering feedback and guidance to candidates at Apex BPS.",
+  },
+  {
+    name: "YouthLinker",
+    logo: youthLogo.url,
+    tint: "25 95% 55%",
+    description:
+      "YouthLinker connects students across the Middle East with meaningful opportunities, student-led initiatives, and extracurricular experiences, bringing insight and guidance to candidates at Apex BPS.",
+  },
+  {
+    name: "Interim Studios",
+    logo: interimLogo.url,
+    tint: "30 10% 55%",
+    description:
+      "Interim explores filmmaking through cinematic storytelling and short film production, sharing creative direction and media-based guidance within the Services & Experiences industry at Apex BPS.",
+  },
+  {
+    name: "Serossweets",
+    logo: serosLogo.url,
+    tint: "22 55% 32%",
+    description:
+      "Serossweets creates handcrafted cookies and dessert creations designed for gifts, events, and everyday occasions, while sharing culinary insight and guidance at Apex BPS.",
+  },
+  {
+    name: "Bite",
+    logo: biteLogo.url,
+    tint: "340 50% 70%",
+    description:
+      "Bite is a brownie based dessert business that specializes in event catering, bringing dessert industry experience and culinary guidance to candidates at Apex BPS!",
+  },
+  {
+    name: "Candy Joy",
+    logo: candyLogo.url,
+    tint: "340 80% 65%",
+    description:
+      "Candy Joy specializes in colorful candy assortments, customized jars, and sweet gift concepts for celebrations and special occasions, while offering creative guidance within the Culinary industry at Apex BPS.",
+  },
+  {
+    name: "Yash Club",
+    logo: yashLogo.url,
+    tint: "260 55% 70%",
+    description:
+      "Yash Club blends creativity and fashion through modern clothing collections inspired by streetwear trends, offering insight and guidance within the Physical Products industry at Apex BPS.",
+  },
+  {
+    name: "Tibian",
+    logo: tibianLogo.url,
+    tint: "220 80% 50%",
+    description:
+      "Tibian specializes in event materials, branding products, and creative production solutions for modern events and initiatives, while providing industry-based guidance at Apex BPS.",
+  },
+  {
+    name: "Snoozmnky",
+    logo: snoozLogo.url,
+    tint: "50 70% 55%",
+    description:
+      "Snoozmnky creates modern hoodie and streetwear pieces inspired by comfort, creativity, and self-expression, while offering fashion and branding guidance within the Physical Products industry at Apex BPS.",
+  },
+];
 
 const sponsors: Entry[] = [{ name: "Coming soon", placeholder: true }];
 const attendees: Entry[] = [{ name: "Coming soon", placeholder: true }];
-
-const tintStyle = (tint?: string): CSSProperties =>
-  tint
-    ? {
-        backgroundColor: `hsl(${tint} / 0.18)`,
-        borderColor: `hsl(${tint} / 0.4)`,
-      }
-    : {};
-
-const modalTintStyle = (tint?: string): CSSProperties =>
-  tint
-    ? {
-        // pull lightness down a bit for the modal background
-        backgroundColor: `hsl(${tint.replace(/\d+%\s*$/, (m) =>
-          `${Math.max(15, parseInt(m) - 25)}%`,
-        )} / 0.55)`,
-        borderColor: `hsl(${tint} / 0.5)`,
-      }
-    : {};
 
 const SectionHeader = ({ title }: { title: string }) => (
   <div className="max-w-5xl mx-auto mb-10 text-center">
@@ -43,151 +94,50 @@ const SectionHeader = ({ title }: { title: string }) => (
   </div>
 );
 
-const EntryCard = ({
-  entry,
-  i,
-  onDetails,
-}: {
-  entry: Entry;
-  i: number;
-  onDetails: (e: Entry) => void;
-}) => {
-  if (entry.placeholder) {
-    return (
-      <div
-        className="relative rounded-3xl p-7 glass border border-dashed border-white/15 bg-white/[0.03] flex items-center justify-center min-h-[160px] reveal"
-        style={{ transitionDelay: `${i * 60}ms` }}
-      >
-        <span className="font-playfair text-xl text-muted-foreground/70 italic">
-          {entry.name}
-        </span>
-      </div>
-    );
-  }
-  return (
-    <div
-      className="relative rounded-3xl p-6 transition-smooth reveal flex flex-col glass border hover:bg-white/10"
-      style={{ transitionDelay: `${i * 60}ms`, ...tintStyle(entry.tint) }}
-    >
-      <div className="flex items-center gap-4">
-        {entry.logo && (
-          <div className="w-20 h-20 shrink-0 flex items-center justify-center">
-            <img
-              src={entry.logo}
-              alt={`${entry.name} logo`}
-              loading="lazy"
-              className="w-[160px] h-[160px] object-contain drop-shadow-lg"
-            />
-          </div>
-        )}
-        <h3 className="font-playfair text-2xl md:text-3xl text-foreground leading-tight">
-          {entry.name}
-        </h3>
-      </div>
-      <div className="mt-6 flex justify-end">
-        <button
-          onClick={() => onDetails(entry)}
-          className="px-5 py-2 rounded-full glass-pill text-xs uppercase tracking-[0.2em] text-foreground/90 hover:bg-white/15 transition-smooth"
-        >
-          Details
-        </button>
-      </div>
-    </div>
-  );
-};
+const PlaceholderCard = ({ entry, i }: { entry: Entry; i: number }) => (
+  <div
+    className="relative rounded-3xl p-7 glass border border-dashed border-white/15 bg-white/[0.03] flex items-center justify-center min-h-[160px] reveal"
+    style={{ transitionDelay: `${i * 60}ms` } as CSSProperties}
+  >
+    <span className="font-playfair text-xl text-muted-foreground/70 italic">{entry.name}</span>
+  </div>
+);
 
 const Section = ({
   title,
   items,
-  onDetails,
   id,
-  wide,
 }: {
   title: string;
   items: Entry[];
-  onDetails: (e: Entry) => void;
   id?: string;
-  wide?: boolean;
 }) => (
   <section id={id} className="mb-20 scroll-mt-32">
     <SectionHeader title={title} />
-    <div className={`max-w-5xl mx-auto grid gap-5 ${wide ? "" : "md:grid-cols-2"}`}>
+    <div className="max-w-5xl mx-auto grid gap-5">
       {items.map((p, i) => (
-        <EntryCard key={`${title}-${p.name}-${i}`} entry={p} i={i} onDetails={onDetails} />
+        <PlaceholderCard key={`${title}-${i}`} entry={p} i={i} />
       ))}
     </div>
   </section>
 );
 
 const Collaborations = () => {
-  const [active, setActive] = useState<Entry | null>(null);
-  const [contactOpen, setContactOpen] = useState(false);
-
   return (
     <PageShell kicker="Together" title="Collaborations">
-      <p className="max-w-2xl mx-auto text-center text-muted-foreground -mt-8 mb-20 font-garamond">
+      <p className="max-w-2xl mx-auto text-center text-muted-foreground -mt-8 mb-20 font-garamond px-4">
         The panelists and partners shaping the Apex experience.
       </p>
 
-      <Section id="panelists" title="Panelists" items={panelists} onDetails={setActive} wide />
-      <Section title="Sponsors" items={sponsors} onDetails={setActive} wide />
-      <Section title="Attendees" items={attendees} onDetails={setActive} wide />
+      <section id="panelists" className="mb-20 scroll-mt-32">
+        <SectionHeader title="Panelists" />
+        <div className="reveal">
+          <PartnerCarousel partners={panelists} />
+        </div>
+      </section>
 
-      <Dialog open={contactOpen} onOpenChange={setContactOpen}>
-        <DialogContent className="max-w-md backdrop-blur-xl shadow-2xl border bg-background/70">
-          <DialogTitle className="font-playfair text-4xl text-gradient text-center">
-            Contact Us
-          </DialogTitle>
-          <div className="gradient-line max-w-[6rem] mx-auto" />
-          <div className="flex flex-col gap-4 mt-4 font-garamond text-lg">
-            <a
-              href="https://wa.me/966508767377"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="group flex items-center gap-3 text-foreground/90 hover:text-accent transition-smooth"
-            >
-              <Phone size={20} className="shrink-0 transition-transform group-hover:scale-110" />
-              <span>+966 508 767 377</span>
-            </a>
-            <a
-              href="mailto:apexbusinesspitchsummit@gmail.com"
-              className="group flex items-center gap-3 text-foreground/90 hover:text-accent transition-smooth break-all"
-            >
-              <Mail size={20} className="shrink-0 transition-transform group-hover:scale-110" />
-              <span>apexbusinesspitchsummit@gmail.com</span>
-            </a>
-            <a
-              href="https://www.instagram.com/apex.bps/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="group flex items-center gap-3 text-foreground/90 hover:text-accent transition-smooth"
-            >
-              <Instagram size={20} className="shrink-0 transition-transform group-hover:scale-110" />
-              <span>apex.bps</span>
-            </a>
-          </div>
-        </DialogContent>
-      </Dialog>
-
-      <Dialog open={!!active} onOpenChange={(o) => !o && setActive(null)}>
-        <DialogContent
-          className="max-w-xl backdrop-blur-xl shadow-2xl border bg-background/55"
-          style={modalTintStyle(active?.tint)}
-        >
-          <DialogTitle className="font-playfair text-3xl md:text-4xl text-gradient pr-8">
-            {active?.name}
-          </DialogTitle>
-          <div className="gradient-line max-w-[6rem]" />
-          {active?.details && (
-            <p
-              key={active.name}
-              className="font-garamond text-lg leading-relaxed text-foreground/95 animate-blur-in"
-            >
-              {active.details}
-            </p>
-          )}
-        </DialogContent>
-      </Dialog>
+      <Section title="Sponsors" items={sponsors} />
+      <Section title="Attendees" items={attendees} />
     </PageShell>
   );
 };

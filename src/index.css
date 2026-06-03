@@ -77,8 +77,9 @@
 
 @layer base {
   * { @apply border-border; }
-  html, body { height: 100%; }
-  html { scroll-behavior: smooth; }
+  html, body { height: 100%; overflow-x: hidden; max-width: 100%; }
+  html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+  img { max-width: 100%; height: auto; }
 
   body {
     @apply text-foreground antialiased;
