@@ -1,8 +1,7 @@
-import { useState, CSSProperties } from "react";
+import { CSSProperties } from "react";
 import { PageShell } from "@/components/layout/PageShell";
-import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog";
-import { Phone, Mail, Instagram } from "lucide-react";
 import { PartnerCarousel, Partner } from "@/components/PartnerCarousel";
+
 
 import vocLogo from "@/assets/partners/voc-debate.png.asset.json";
 import youthLogo from "@/assets/partners/youthlinker.png.asset.json";
