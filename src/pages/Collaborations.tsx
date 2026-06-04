@@ -1,4 +1,4 @@
-import { CSSProperties } from "react";
+import { CSSProperties, useEffect } from "react";
 import { PageShell } from "@/components/layout/PageShell";
 import { PartnerCarousel, Partner } from "@/components/PartnerCarousel";
 

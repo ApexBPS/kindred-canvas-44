@@ -14,6 +14,7 @@ export const PartnerCarousel = ({ partners }: { partners: Partner[] }) => {
     align: "center",
     loop: true,
     containScroll: false,
+    duration: 32,
   });
   const [selected, setSelected] = useState(0);
 
@@ -60,7 +61,9 @@ export const PartnerCarousel = ({ partners }: { partners: Partner[] }) => {
                       <img
                         src={p.logo}
                         alt={`${p.name} logo`}
-                        loading="lazy"
+                        loading="eager"
+                        decoding="async"
+                        fetchPriority="high"
                         className="w-full h-full object-cover block"
                       />
                     </div>
