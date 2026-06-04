@@ -60,7 +60,9 @@ export const PartnerCarousel = ({ partners }: { partners: Partner[] }) => {
                       <img
                         src={p.logo}
                         alt={`${p.name} logo`}
-                        loading="lazy"
+                        loading="eager"
+                        decoding="async"
+                        fetchPriority="high"
                         className="w-full h-full object-cover block"
                       />
                     </div>
