@@ -51,11 +51,7 @@ const Categories = () => (
         <article
           key={ind.title}
           className="reveal glass glass-bordered card-premium rounded-3xl p-7 flex flex-col"
-          style={{
-            transitionDelay: `${i * 90}ms`,
-            background: `linear-gradient(155deg, hsl(${ind.tint} / 0.18), hsl(${ind.tint} / 0.04) 60%, transparent)`,
-            borderColor: `hsl(${ind.tint} / 0.35)`,
-          }}
+          style={{ transitionDelay: `${i * 90}ms` }}
         >
           <h3 className="font-playfair text-3xl text-gradient leading-tight">{ind.title}</h3>
           <div className="gradient-line my-4" />
