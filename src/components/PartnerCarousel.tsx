@@ -56,15 +56,12 @@ export const PartnerCarousel = ({ partners }: { partners: Partner[] }) => {
                   }}
                 >
                   <div className="flex items-center gap-4 mb-4">
-                    <div
-                      className="w-16 h-16 sm:w-20 sm:h-20 rounded-2xl overflow-hidden shrink-0 ring-1"
-                      style={{ background: "hsl(0 0% 100% / 0.06)", borderColor: `hsl(${p.tint} / 0.4)` }}
-                    >
+                    <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-full overflow-hidden shrink-0">
                       <img
                         src={p.logo}
                         alt={`${p.name} logo`}
                         loading="lazy"
-                        className="w-full h-full object-cover"
+                        className="w-full h-full object-cover block"
                       />
                     </div>
                     <h3 className="font-playfair text-2xl sm:text-3xl text-foreground leading-tight">
