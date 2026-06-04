@@ -14,6 +14,7 @@ export const PartnerCarousel = ({ partners }: { partners: Partner[] }) => {
     align: "center",
     loop: true,
     containScroll: false,
+    duration: 32,
   });
   const [selected, setSelected] = useState(0);
 
