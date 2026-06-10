@@ -19,6 +19,7 @@ const members: { name: string; role: string }[] = [
   { name: "Mohamed El Safadi", role: "Events Associate" },
   { name: "Sadeen Abdulaziz", role: "Events Associate" },
   { name: "Sally Elmasry", role: "Events Associate" },
+  { name: "Abdullah Talal", role: "Events Associate" },
   { name: "Bateel Mashabi", role: "Design Director" },
   { name: "Lamar Albtaddini", role: "Design Director" },
   { name: "Rudina Shabana", role: "Social Affairs Associate" },
