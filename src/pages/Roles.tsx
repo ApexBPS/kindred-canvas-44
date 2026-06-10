@@ -8,7 +8,7 @@ import { useReveal } from "@/hooks/use-reveal";
 type Role = {
   title: string;
   desc: string;
-  cta: { label: string; to?: string; disabled?: boolean };
+  cta: { label: string; to?: string; href?: string; disabled?: boolean };
 };
 
 const roles: Role[] = [
@@ -30,17 +30,17 @@ const roles: Role[] = [
   {
     title: "Volunteers",
     desc: "Assist in pre-event preparation and help address participant needs. They support setup and ensure necessary resources are in place for the event to run smoothly.",
-    cta: { label: "Apply Now", disabled: true },
+    cta: { label: "Apply Now", href: "https://docs.google.com/forms/d/e/1FAIpQLSe3v4JA8loaF4yWkXdcEixFF5g8a5FrGF5fF_lOgHA-zCEGew/viewform?usp=dialog" },
   },
   {
     title: "Security",
     desc: "Responsible for maintaining a safe and controlled environment. They manage access, monitor activity, and ensure all participants follow event rules.",
-    cta: { label: "Apply Now", disabled: true },
+    cta: { label: "Apply Now", href: "https://docs.google.com/forms/d/e/1FAIpQLSffDTv2316c2yH5XJvblsY-x0w4RdWg6s2gUHvi1VYtJCuv0Q/viewform?usp=dialog" },
   },
   {
     title: "Press",
     desc: "Covers the event through media, interviews, and content creation. They document key moments, highlight candidates' work, and promote the event.",
-    cta: { label: "Apply Now", disabled: true },
+    cta: { label: "Apply Now", href: "https://docs.google.com/forms/d/e/1FAIpQLSfXcGzqgUyfRGTMizMUEH_-EUExxxTEH3WBuTv9KYyCc2x5HQ/viewform?usp=dialog" },
   },
 ];
 
@@ -82,7 +82,13 @@ const Roles = () => {
                 style={{ transitionDelay: `${i * 70}ms` }}
               >
                 <div className="absolute top-4 right-5">
-                  {r.cta.to ? <Link to={r.cta.to}>{cta}</Link> : cta}
+                  {r.cta.to ? (
+                    <Link to={r.cta.to}>{cta}</Link>
+                  ) : r.cta.href ? (
+                    <a href={r.cta.href} target="_blank" rel="noopener noreferrer">{cta}</a>
+                  ) : (
+                    cta
+                  )}
                 </div>
                 <h3 className="font-playfair text-2xl md:text-3xl text-foreground">{r.title}</h3>
                 <div className="gradient-line mt-3 mb-4 max-w-[80%]" />
