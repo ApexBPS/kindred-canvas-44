@@ -51,7 +51,10 @@ const About = () => {
         </h2>
         <div className="gradient-line my-8 max-w-md mx-auto" />
         <p className="font-playfair text-foreground/95" style={{ fontSize: "clamp(2.5rem, 6vw, 4.5rem)" }}>
-          To Be Announced
+          December 3<sup className="text-[0.45em] align-super">rd</sup>, 4<sup className="text-[0.45em] align-super">th</sup> &amp; 5<sup className="text-[0.45em] align-super">th</sup>
+        </p>
+        <p className="font-garamond italic text-foreground/75 mt-4 text-lg md:text-xl">
+          Venue — To Be Announced
         </p>
         <div className="gradient-line my-8 max-w-md mx-auto" />
       </section>

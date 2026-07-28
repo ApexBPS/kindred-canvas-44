@@ -13,7 +13,7 @@ const members: { name: string; role: string }[] = [
   { name: "Yanal Hilan", role: "Operations Director" },
   { name: "Lamar Nawar", role: "Events Director" },
   { name: "Dareen Al-Najjar", role: "Social Affairs Director" },
-  { name: "Karim Noamany", role: "Operations Associate" },
+  { name: "Karim Noamany", role: "Events Associate" },
   { name: "Ahmed Elamir", role: "Operations Associate" },
   { name: "Lana AlHaj", role: "Operations Associate" },
   { name: "Mohamed El Safadi", role: "Events Associate" },
