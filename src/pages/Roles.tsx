@@ -30,17 +30,17 @@ const roles: Role[] = [
   {
     title: "Volunteers",
     desc: "Assist in pre-event preparation and help address participant needs. They support setup and ensure necessary resources are in place for the event to run smoothly.",
-    cta: { label: "Apply Now", href: "https://docs.google.com/forms/d/e/1FAIpQLSe3v4JA8loaF4yWkXdcEixFF5g8a5FrGF5fF_lOgHA-zCEGew/viewform?usp=dialog" },
+    cta: { label: "Closed", disabled: true },
   },
   {
     title: "Security",
     desc: "Responsible for maintaining a safe and controlled environment. They manage access, monitor activity, and ensure all participants follow event rules.",
-    cta: { label: "Apply Now", href: "https://docs.google.com/forms/d/e/1FAIpQLSffDTv2316c2yH5XJvblsY-x0w4RdWg6s2gUHvi1VYtJCuv0Q/viewform?usp=dialog" },
+    cta: { label: "Closed", disabled: true },
   },
   {
     title: "Press",
     desc: "Covers the event through media, interviews, and content creation. They document key moments, highlight candidates' work, and promote the event.",
-    cta: { label: "Apply Now", href: "https://docs.google.com/forms/d/e/1FAIpQLSfXcGzqgUyfRGTMizMUEH_-EUExxxTEH3WBuTv9KYyCc2x5HQ/viewform?usp=dialog" },
+    cta: { label: "Closed", disabled: true },
   },
 ];
 
