@@ -12,6 +12,8 @@ import candyLogo from "@/assets/partners/candyjoy.png.asset.json";
 import yashLogo from "@/assets/partners/yash.png.asset.json";
 import tibianLogo from "@/assets/partners/tibian.png.asset.json";
 import snoozLogo from "@/assets/partners/snoozmnky.png.asset.json";
+import pressLogo from "@/assets/partners/press-corps.png.asset.json";
+import naf3Logo from "@/assets/partners/naf3.png.asset.json";
 
 type Entry = {
   name: string;
@@ -84,8 +86,24 @@ const panelists: Partner[] = [
   },
 ];
 
+const attendeePartners: Partner[] = [
+  {
+    name: "Press Corps",
+    logo: pressLogo.url,
+    tint: "175 60% 70%",
+    description:
+      "Press Corps is an organization that gives journalists and reporters the opportunity to cover a specific organization or event. Members work for different media outlets and debate on their perspectives, but together they attend press briefings, conduct interviews, and report on news from assignments such as government bodies, major events, or Model United Nations conferences.",
+  },
+  {
+    name: "NAF3 Organization",
+    logo: naf3Logo.url,
+    tint: "265 55% 70%",
+    description:
+      "NAF3 is a student-led community created by students, for students. Its mission is to empower learners by connecting them with meaningful extracurricular opportunities, personalized mentorship, and genuine insider advice from peers who have already experienced prestigious programs — bridging the gap between students and opportunities to foster personal growth, confidence, and future success.",
+  },
+];
+
 const sponsors: Entry[] = [{ name: "Coming soon", placeholder: true }];
-const attendees: Entry[] = [{ name: "Coming soon", placeholder: true }];
 
 const SectionHeader = ({ title }: { title: string }) => (
   <div className="max-w-5xl mx-auto mb-10 text-center">
@@ -137,7 +155,13 @@ const Collaborations = () => {
       </section>
 
       <Section title="Sponsors" items={sponsors} />
-      <Section title="Attendees" items={attendees} />
+
+      <section id="attendees" className="mb-20 scroll-mt-32">
+        <SectionHeader title="Attendees" />
+        <div className="reveal">
+          <PartnerCarousel partners={attendeePartners} />
+        </div>
+      </section>
     </PageShell>
   );
 };
